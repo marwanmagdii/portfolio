@@ -1382,14 +1382,6 @@ a:focus {
 
 /* card */
 /* Overall Body Style */
-/* Overall Body Style */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Disable scrolling initially */
-}
 
 /* Portfolio Section Styling */
 .portfolio-section {
@@ -1400,13 +1392,13 @@ body {
 
 .portfolio-section p {
   font-size: 18px;
-  color: #006466;
+  color: #414141;
   margin-bottom: 5px;
 }
 
 .portfolio-section h2 {
   font-size: 36px;
-  color: #006466;
+  color: #414141;
   margin: 0;
   padding-bottom: 20px;
   font-weight: bold;
@@ -1420,29 +1412,32 @@ body {
 }
 
 .card {
-  display: flex; /* Use flexbox for easier layout */
-  flex-direction: row; /* Arrange items horizontally */
-  width: 350px;
+  width: 450px;
   background-color: #006466;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
 
 .card img {
-  width: 300px; /* Adjust image width as needed */
-  margin-right: 20px; /* Add margin to separate image and content */
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
 .card-content {
-  flex: 1; /* Allow content to take remaining space */
-  padding: 15px;
-  text-align: left; /* Align text to the left */
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  text-align: justify;
 }
 
 .card-title {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 10px;
   color: #fff;
 }
@@ -1463,7 +1458,6 @@ body {
   color: #fff;
 }
 
-/* Card Preview Styles */
 .card-preview {
   position: fixed;
   top: 0;
@@ -1477,7 +1471,6 @@ body {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-  overflow: hidden; /* Disable scrolling when preview is open */
 }
 
 .card-preview.show {
@@ -1490,11 +1483,21 @@ body {
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  max-width: 900px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Center the preview content */
+  display: flex;
+  width: 95%;
+  max-width: 1200px;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .preview-image {
@@ -1516,23 +1519,21 @@ body {
 }
 
 .preview-title {
-  font-size: 20px;
+  font-size: 18px;
+  text-align: justify;
   margin-bottom: 10px;
   color: #fff;
 }
 
 .preview-description {
   color: #fff;
+  font-weight: normal; /* This will remove the bold effect */
 }
 
-.preview-close-button {
+.preview-overlay {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #fff;
-  color: #006466;
-  border: none;
-  border-radius: 50%;
-  padding: 5px;
-  cursor: pointer;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
