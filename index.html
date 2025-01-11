@@ -349,12 +349,15 @@ In this project, I was testing the banking website and two mobile apps—Banki M
 
         const preview = document.getElementById(previewId);
         preview.classList.add("show");
-        
+              document.body.style.overflow = "hidden"; // Disable scrolling
+
       }
 
       function closePreview(previewId) {
         const preview = document.getElementById(previewId);
         preview.classList.remove("show");
+              document.body.style.overflow = "auto"; // Re-enable scrolling
+
       }
     </script>
     <!-- Portfolio Start 
