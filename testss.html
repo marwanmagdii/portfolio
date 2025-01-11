@@ -1,349 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Cards with Preview Modal</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwan Magdy</title>
     <style>
-      /* General Styles */
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-      }
+        body {
+            font-family: sans-serif;
+            margin: 0;
+        }
 
-      .portfolio-section {
-        text-align: center;
-        margin-top: 50px;
-        margin-bottom: 40px;
-      }
+        .hero {
+            background-color: #2c3e4c; /* Set background color */
+            color: #fff; /* Set text color */
+            padding: 20px; /* Add padding for spacing */
+        }
 
-      .portfolio-section p {
-        font-size: 18px;
-        color: #414141;
-        margin-bottom: 5px;
-      }
+        .hero-image {
+            max-width: 180px;
+        }
 
-      .portfolio-section h2 {
-        font-size: 36px;
-        color: #414141;
-        margin: 0;
-        padding-bottom: 20px;
-        font-weight: bold;
-      }
+        @media (min-width: 360px) and (max-width: 414px) {
+            .hero {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+            }
 
-      /* Card Container and Styles */
-      .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding: 0 10px;
-      }
+            .hero-image {
+                width: 40%;
+                max-width: 180px;
+                margin-bottom: 20px;
+            }
 
-      .card {
-        width: 450px;
-        background-color: #006466;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 15px;
-        text-align: center;
-        cursor: pointer; /* Make entire card clickable */
-        transition: transform 0.3s ease-in-out;
-      }
+            .hero-content {
+                text-align: center;
+            }
 
-      .card:hover {
-        transform: scale(1.05); /* Slight zoom effect on hover */
-      }
+            .hero-text h1 {
+                font-size: 22px;
+                margin-bottom: 8px;
+            }
 
-      .card img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 5px;
-      }
+            .hero-text h2 {
+                font-size: 16px;
+            }
 
-      .card-content {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-      }
+            .hero-btn {
+                margin-top: 15px;
+            }
 
-      .card-title {
-        font-size: 18px;
-        color: #fff;
-        margin: 15px 0;
-      }
-
-      .button-container {
-        display: flex;
-        justify-content: center;
-        margin-top: auto;
-      }
-
-      .button-container a {
-        display: inline-block;
-        padding: 8px 16px;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #006466;
-        text-decoration: none;
-        border: 1px solid #fff;
-        transition: background-color 0.3s ease-in-out;
-      }
-
-      .button-container a:hover {
-        background-color: #006466;
-        color: #fff;
-      }
-
-     /* Preview Modal */
-.card-preview {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-  z-index: 9999; /* Ensures the modal is on top of everything */
-}
-
-.card-preview.show {
-  visibility: visible;
-  opacity: 1;
-}
-
-.preview-content {
-  background-color: #006466;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  display: flex;
-  width: 95%;
-  max-width: 1200px;
-  animation: slideIn 0.5s ease-in-out;
-  flex-direction: row;
-  position: relative;
-  cursor: pointer; /* Makes the entire content clickable */
-}
-
-@keyframes slideIn {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.preview-image {
-  flex: 0 0 400px;
-  margin-right: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.preview-image img {
-  max-width: 100%;
-  max-height: 350px;
-  border-radius: 10px;
-}
-
-.preview-text {
-  flex: 1;
-  overflow-y: auto;  /* Enables vertical scrolling */
-  max-height: 500px; /* Restrict height for scrolling */
-}
-
-.preview-title {
-  font-size: 18px;
-  text-align: justify;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.preview-description {
-  color: #fff;
-}
-
-.preview-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-
-     @media (max-width: 768px) {
-  .preview-content {
-    flex-direction: column;
-    padding: 20px;
-    width: 90%;
-    max-width: none;
-  }
-
-  .preview-image {
-    margin-bottom: 20px;
-    flex: 0 0 50%; /* This makes the image take 50% of the width */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .preview-image img {
-    max-width: 100%;
-    max-height: 200px; /* Adjust the height if needed */
-    border-radius: 10px;
-  }
-}
+            .hero-btn .btn {
+                padding: 8px 16px;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <!-- Portfolio Section -->
-    <div class="portfolio-section">
-      <p>My Portfolio</p>
-      <h2>My Portfolio</h2>
+</head>
+<body>
+
+    <div class="hero" id="home">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-sm-12 col-md-6 order-md-2">
+                    <div class="hero-image">
+                        <img src="img/Marwan_Magdy_1.png" alt="Marwan Magdy"> 
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 order-md-1">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <p>I'm</p>
+                            <h1>Marwan Magdy</h1>
+                            <h2></h2>
+                            <div class="typed-text">QA/QC Software Tester</div>
+                        </div>
+                        <div class="hero-btn">
+                            <a class="btn" href="#">Contact Me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Card Section -->
-    <div class="card-container">
-      <div class="card" onclick="togglePreview('preview1')">
-        <img src="img/CAE.jpg" alt="Credit Agricole Image" />
-        <div class="card-content">
-          <h3 class="card-title">
-            QA and Testing for Banking Website and Mobile Applications
-            <br />(Banki Mobile & Banki Wallet) <br /><b
-              >for Credit Agricole Egypt</b
-            >
-          </h3>
-          <div class="button-container">
-            <a
-              href="#"
-              onclick="event.stopPropagation(); togglePreview('preview1')"
-              >Preview</a
-            >
-          </div>
-        </div>
-      </div>
-
-      <div class="card" onclick="togglePreview('preview2')">
-        <img src="img/sauce lab.png" alt="SauceLabs Image" />
-        <div class="card-content">
-          <h3 class="card-title">E-commerce Website Testing</h3>
-          <div class="button-container">
-            <a
-              href="#"
-              onclick="event.stopPropagation(); togglePreview('preview2')"
-              >Preview</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Preview Modals -->
-    <div id="preview1" class="card-preview" onclick="closePreview('preview1')">
-      <div class="preview-overlay"></div>
-      <div
-        class="preview-content"
-        onclick="event.stopPropagation(); closePreview('preview1')"
-      >
-        <div class="preview-image">
-          <img src="img/CAE.jpg" alt="Credit Agricole Image" />
-        </div>
-        <div class="preview-text">
-          <h3 class="preview-title">
-            QA and Testing for <b>Banking Website</b> and
-            <b>Mobile Applications</b> <br />(Banki Mobile & Banki Wallet)
-            <br />
-            <b>for Credit Agricole Egypt</b>
-          </h3>
-          <p class="preview-description">
-            <b> Project Overview: </b><br />
-            In this project, I was testing the banking website and two mobile
-            apps—Banki Mobile and Banki Wallet. The goal was to make sure the
-            website and apps were secure, easy to use, and worked well.
-
-            <br />
-            <b>Key Contributions: </b> <br />
-
-            1. Performed manual testing on the website and both mobile apps to
-            ensure they worked properly. <br />
-            2. Tested the security of the website and apps to find any potential
-            vulnerabilities.<br />
-            3. Developed and ran test cases to check the features of the website
-            and apps.<br />
-            4. Participated in Agile sprints to give feedback and make
-            improvements <br />
-            5. Found bugs during testing and reported them with clear steps
-            <br />
-            6. Evaluated the UI/UX to ensure the website and apps provided a
-            smooth and user-friendly experience<br />
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div id="preview2" class="card-preview" onclick="closePreview('preview2')">
-      <div class="preview-overlay"></div>
-      <div
-        class="preview-content"
-        onclick="event.stopPropagation(); closePreview('preview2')"
-      >
-        <div class="preview-image">
-          <img src="img/sauce lab.png" alt="SauceLabs Image" />
-        </div>
-        <div class="preview-text">
-          <h3 class="preview-title">E-commerce Website Testing</h3>
-          <p class="preview-description">
-            <b> Project Overview: </b><br />
-            In this project, I was testing an entire e-commerce website to make
-            sure it worked smoothly and provided a good experience for users.
-            The goal was to test the website to ensure it provided an easy
-            shopping experience.
-            <br />
-            <b>Key Contributions: </b> <br />
-
-            1. Performed manual testing to check the website’s functionality and
-            usability. 2. Developed test plans and test cases to ensure the
-            website worked as expected. 3. Found bugs during testing and
-            reported them with clear steps to reproduce. 4. Evaluated the UI/UX
-            to ensure the website was user-friendly and intuitive.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      function togglePreview(previewId) {
-        const preview = document.getElementById(previewId);
-        preview.classList.add("show");
-        document.body.style.overflow = "hidden"; // Disable scrolling
-      }
-
-      function closePreview(previewId) {
-        const preview = document.getElementById(previewId);
-        preview.classList.remove("show");
-        document.body.style.overflow = "auto"; // Re-enable scrolling
-      }
-    </script>
-  </body>
+</body>
 </html>

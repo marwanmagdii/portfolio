@@ -248,6 +248,10 @@ a:focus {
 /*******************************/
 /********** Hero CSS ***********/
 /*******************************/
+/*******************************/
+/********** Hero CSS ***********/
+/*******************************/
+
 .hero {
   position: relative;
   width: 100%;
@@ -255,10 +259,13 @@ a:focus {
   padding: 45px 0 0 0;
   overflow: hidden;
   background-color: #006466;
-  /* background: /*linear-gradient(rgba(0, 0, 50, 0.85), rgba(0, 0, 100, 0.85)), url(../img/gradient-1761190_1280.jpg);*/
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-direction: column; /* Default layout for larger screens */
+  justify-content: center;
+  align-items: center;
 }
 
 .hero .container-fluid {
@@ -283,6 +290,7 @@ a:focus {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  text-align: left;
 }
 
 .hero .hero-text p {
@@ -370,13 +378,20 @@ a:focus {
   .hero {
     padding-top: 60px;
     padding-bottom: 60px;
+    flex-direction: row; /* Make it row on small screens */
+    justify-content: space-between;
+    align-items: center; /* Align everything vertically centered */
   }
 
-  .hero,
-  .hero .hero-text,
-  .hero .hero-btn {
-    width: 100%;
-    text-align: center;
+  .hero .hero-image {
+    width: 40%; /* Image size adjusted */
+    max-width: 120px; /* Limit the image size */
+    padding-right: 0;
+  }
+
+  .hero .hero-content {
+    width: 55%; /* Text content width */
+    text-align: left;
   }
 
   .hero .hero-text p {
@@ -417,6 +432,48 @@ a:focus {
     letter-spacing: 0;
   }
 }
+
+@media (min-width: 360px) and (max-width: 414px) {
+  /* Hero Section */
+  .hero {
+    display: flex;
+    flex-direction: column; /* Stack image and content vertically */
+    justify-content: space-between; /* Space between image and content */
+    align-items: center; /* Center both image and content horizontally */
+    padding: 20px; /* Adjust padding as needed */
+  }
+
+  .hero-image {
+    display: block;
+    width: 40%; /* Adjust image width as needed */
+    max-width: 180px;
+    margin-bottom: 20px; /* Add spacing below the image */
+  }
+
+  .hero-content {
+    text-align: center; /* Center text within the content section */
+  }
+
+  /* Text and Button */
+  .hero-text h1 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .hero-text h2 {
+    font-size: 16px;
+  }
+
+  .hero-btn {
+    margin-top: 15px;
+  }
+
+  .hero-btn .btn {
+    padding: 8px 16px;
+  }
+}
+
+
 
 /*******************************/
 /******* Section Header ********/
