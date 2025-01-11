@@ -1383,81 +1383,108 @@ a:focus {
 /* card */
 /* Overall Body Style */
 
-/* Portfolio Section Styling */
-.portfolio-section {
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: 40px;
-}
 
-.portfolio-section p {
-  font-size: 18px;
-  color: #414141;
-  margin-bottom: 5px;
-}
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
 
-.portfolio-section h2 {
-  font-size: 36px;
-  color: #414141;
-  margin: 0;
-  padding-bottom: 20px;
-  font-weight: bold;
-}
+      .portfolio-section {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 40px;
+      }
 
-/* Card Container and Card Styles */
-.card-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
+      .portfolio-section p {
+        font-size: 18px;
+        color: #414141;
+        margin-bottom: 5px;
+      }
 
-.card {
-  width: 450px;
-  background-color: #006466;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
-}
+      .portfolio-section h2 {
+        font-size: 36px;
+        color: #414141;
+        margin: 0;
+        padding-bottom: 20px;
+        font-weight: bold;
+      }
 
-.card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
+      /* Card Container and Styles */
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 0 10px;
+      }
 
-.card-content {
-  padding-bottom: 15px;
-  padding-top: 15px;
-  padding-left: 12px;
-  padding-right: 12px;
+      .card {
+        width: 450px;
+        background-color: #006466;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer; /* Make entire card clickable */
+        transition: transform 0.3s ease-in-out;
+      }
 
-  text-align: justify;
-}
+      .card:hover {
+        transform: scale(1.05); /* Slight zoom effect on hover */
+      }
 
-.card-title {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #fff;
-}
+      .card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
 
-.preview-button {
-  display: inline-block;
-  padding: 8px 16px;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #006466;
-  text-decoration: none;
-  border: 1px solid #fff;
-  transition: background-color 0.3s ease-in-out;
-}
+      .card-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-.preview-button:hover {
-  background-color: #006466;
-  color: #fff;
-}
+      .card-title {
+        font-size: 18px;
+        color: #fff;
+        margin: 15px 0;
+      }
 
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: auto;
+      }
+
+      .button-container a {
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #006466;
+        text-decoration: none;
+        border: 1px solid #fff;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .button-container a:hover {
+        background-color: #006466;
+        color: #fff;
+      }
+
+     /* Preview Modal */
 .card-preview {
   position: fixed;
   top: 0;
@@ -1471,6 +1498,7 @@ a:focus {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 9999; /* Ensures the modal is on top of everything */
 }
 
 .card-preview.show {
@@ -1487,6 +1515,9 @@ a:focus {
   width: 95%;
   max-width: 1200px;
   animation: slideIn 0.5s ease-in-out;
+  flex-direction: row;
+  position: relative;
+  cursor: pointer; /* Makes the entire content clickable */
 }
 
 @keyframes slideIn {
@@ -1516,6 +1547,8 @@ a:focus {
 
 .preview-text {
   flex: 1;
+  overflow-y: auto;  /* Enables vertical scrolling */
+  max-height: 500px; /* Restrict height for scrolling */
 }
 
 .preview-title {
@@ -1527,7 +1560,6 @@ a:focus {
 
 .preview-description {
   color: #fff;
-  font-weight: normal; /* This will remove the bold effect */
 }
 
 .preview-overlay {
@@ -1536,4 +1568,30 @@ a:focus {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+
+    /* Mobile Styles */
+@media (max-width: 768px) {
+  .preview-content {
+    flex-direction: column;
+    padding: 20px;
+    width: 90%;
+    max-width: none;
+  }
+
+  .preview-image {
+    margin-bottom: 20px;
+    flex: 0 0 100%; /* Ensures image takes full width of the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .preview-image img {
+    width: 90%; /* Decreased width to reduce image size */
+    height: 125px; /* Set a fixed height to ensure a consistent rectangular shape */
+    object-fit: cover; /* Ensures the image keeps its aspect ratio and covers the container */
+    border-radius: 10px;
+  }
 }

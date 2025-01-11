@@ -57,15 +57,14 @@
             <a href="#home" class="nav-item nav-link active">Home</a>
             <a href="#about" class="nav-item nav-link">About</a>
             <a href="#service" class="nav-item nav-link">Service</a>
-              <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
+            <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
             <a href="#experience" class="nav-item nav-link">Experience</a>
             <!-- <a href="#price" class="nav-item nav-link">Price</a>
             <a href="#review" class="nav-item nav-link">Review</a>
             <a href="#team" class="nav-item nav-link">Team</a>
             <a href="#blog" class="nav-item nav-link">Blog</a> -->
             <a href="#contact1" class="nav-item nav-link">Contact</a>
-                    <a href="testss.html" class="nav-item nav-link">Test Page</a>
-
+            <a href="testss.html" class="nav-item nav-link">Test Page</a>
           </div>
         </div>
       </div>
@@ -116,7 +115,13 @@
               </div>
               <div class="about-text">
                 <p>
-                 I am a software tester with experience in manual and automation testing. I work on making sure software is high-quality and reliable through effective testing methods. I also review UI/UX and solve problems to improve user experiences. Previously, I worked as a mobile developer using Flutter, which helped me become a better software tester by giving me a deeper understanding of how software is developed.
+                  I am a software tester with experience in manual and
+                  automation testing. I work on making sure software is
+                  high-quality and reliable through effective testing methods. I
+                  also review UI/UX and solve problems to improve user
+                  experiences. Previously, I worked as a mobile developer using
+                  Flutter, which helped me become a better software tester by
+                  giving me a deeper understanding of how software is developed.
                 </p>
               </div>
               <div class="skills">
@@ -263,7 +268,9 @@
     <!-- Service End -->
     <!-- card protofolio -->
     <!-- Portfolio Section -->
- <div class="portfolio" id="portfolio"></div>
+    <!-- Portfolio Section -->
+     <div>
+    <div class="portfolio" id="portfolio"></div>
  <div
           class="section-header text-center wow zoomIn"
           data-wow-delay="0.1s"
@@ -276,80 +283,124 @@
     <!-- Card Section -->
     <div class="card-container">
       <div class="card" onclick="togglePreview('preview1')">
-        <img src="img/CAE.jpg" alt="Card Image" />
+        <img src="img/CAE.jpg" alt="Credit Agricole Image" />
         <div class="card-content">
           <h3 class="card-title">
-           QA and Testing for Banking Website and Mobile Applications <br>(Banki Mobile & Banki Wallet) <br> <b>for Credit Agricole Egypt</b></h3>
-       <div style="text-align: center;">   <a href="#" class="preview-button">Preview</a></div>
+            QA and Testing for Banking Website and Mobile Applications
+            <br />(Banki Mobile & Banki Wallet) <br /><b
+              >for Credit Agricole Egypt</b
+            >
+          </h3>
+          <div class="button-container">
+            <a
+              href="#"
+              onclick="event.stopPropagation(); togglePreview('preview1')"
+              >Preview</a
+            >
+          </div>
         </div>
       </div>
 
       <div class="card" onclick="togglePreview('preview2')">
-        <img src="img/sauce lab.png" alt="Card Image 2" />
+        <img src="img/sauce lab.png" alt="SauceLabs Image" />
         <div class="card-content">
           <h3 class="card-title">E-commerce Website Testing</h3>
-           <div style="text-align: center; width: 100%; position: absolute; bottom: 20px;">
-          <a href="#" class="preview-button">Preview</a></div>
+          <div class="button-container">
+            <a
+              href="#"
+              onclick="event.stopPropagation(); togglePreview('preview2')"
+              >Preview</a
+            >
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Preview Sections -->
-    <div class="card-preview" id="preview1">
-      <div class="preview-overlay" onclick="closePreview('preview1')"></div>
-      <div class="preview-content">
+    <!-- Preview Modals -->
+    <div id="preview1" class="card-preview" onclick="closePreview('preview1')">
+      <div class="preview-overlay"></div>
+      <div
+        class="preview-content"
+        onclick="event.stopPropagation(); closePreview('preview1')"
+      >
         <div class="preview-image">
-          <img src="img/CAE.jpg" alt="Card Image" />
+          <img src="img/CAE.jpg" alt="Credit Agricole Image" />
         </div>
         <div class="preview-text">
-          <h3 class="preview-title"> QA and Testing for <b>Banking Website</b> and <b>Mobile Applications</b> <br>(Banki Mobile & Banki Wallet) <br> <b>for Credit Agricole Egypt</h3>
+          <h3 class="preview-title">
+            QA and Testing for <b>Banking Website</b> and
+            <b>Mobile Applications</b> <br />(Banki Mobile & Banki Wallet)
+            <br />
+            <b>for Credit Agricole Egypt</b>
+          </h3>
           <p class="preview-description">
-          <b>  Project Overview: </b><br>
-In this project, I was testing the banking website and two mobile apps—Banki Mobile and Banki Wallet. 
-The goal was to make sure the website and apps were secure, easy to use, and worked well.
+            <b> Project Overview: </b><br />
+            In this project, I was testing the banking website and two mobile
+            apps—Banki Mobile and Banki Wallet. The goal was to make sure the
+            website and apps were secure, easy to use, and worked well.
 
-    <br> <b >Key Contributions: </b> <br>
+            <br />
+            <b>Key Contributions: </b> <br />
 
-1. Performed manual testing on the website and both mobile apps to ensure they worked properly. <br>
-2. Tested the security of the website and apps to find any potential vulnerabilities.<br>
-3. Developed and ran test cases to check the features of the website and apps.<br>
-4. Participated in Agile sprints to give feedback and make improvements <br>
-5. Found bugs during testing and reported them with clear steps <br>
-6. Evaluated the UI/UX to ensure the website and apps provided a smooth and user-friendly experience<br>
+            1. Performed manual testing on the website and both mobile apps to
+            ensure they worked properly. <br />
+            2. Tested the security of the website and apps to find any potential
+            vulnerabilities.<br />
+            3. Developed and ran test cases to check the features of the website
+            and apps.<br />
+            4. Participated in Agile sprints to give feedback and make
+            improvements <br />
+            5. Found bugs during testing and reported them with clear steps
+            <br />
+            6. Evaluated the UI/UX to ensure the website and apps provided a
+            smooth and user-friendly experience<br />
           </p>
         </div>
       </div>
     </div>
 
-    <div class="card-preview" id="preview2">
-      <div class="preview-overlay" onclick="closePreview('preview2')"></div>
-      <div class="preview-content">
+    <div id="preview2" class="card-preview" onclick="closePreview('preview2')">
+      <div class="preview-overlay"></div>
+      <div
+        class="preview-content"
+        onclick="event.stopPropagation(); closePreview('preview2')"
+      >
         <div class="preview-image">
-          <img src="img/sauce lab.png" alt="Card Image 2" />
+          <img src="img/sauce lab.png" alt="SauceLabs Image" />
         </div>
         <div class="preview-text">
-          <h3 class="preview-title"> E-commerce Website Testing</h3>
+          <h3 class="preview-title">E-commerce Website Testing</h3>
           <p class="preview-description">
-            </p>
+            <b> Project Overview: </b><br />
+            In this project, I was testing an entire e-commerce website to make
+            sure it worked smoothly and provided a good experience for users.
+            The goal was to test the website to ensure it provided an easy
+            shopping experience.
+            <br />
+            <b>Key Contributions: </b> <br />
+
+            1. Performed manual testing to check the website’s functionality and
+            usability. 2. Developed test plans and test cases to ensure the
+            website worked as expected. 3. Found bugs during testing and
+            reported them with clear steps to reproduce. 4. Evaluated the UI/UX
+            to ensure the website was user-friendly and intuitive.
+          </p>
         </div>
       </div>
     </div>
 </div>
+<!-- script for portofolio -->
     <script>
       function togglePreview(previewId) {
-          event.preventDefault(); // Prevent the default anchor behavior
-
         const preview = document.getElementById(previewId);
         preview.classList.add("show");
-              document.body.style.overflow = "hidden"; // Disable scrolling
-
+        document.body.style.overflow = "hidden"; // Disable scrolling
       }
 
       function closePreview(previewId) {
         const preview = document.getElementById(previewId);
         preview.classList.remove("show");
-              document.body.style.overflow = "auto"; // Re-enable scrolling
-
+        document.body.style.overflow = "auto"; // Re-enable scrolling
       }
     </script>
     <!-- Portfolio Start 
