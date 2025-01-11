@@ -432,44 +432,45 @@ a:focus {
     letter-spacing: 0;
   }
 }
-
 @media (min-width: 360px) and (max-width: 414px) {
-  /* Hero Section */
   .hero {
-    display: flex;
-    flex-direction: column; /* Stack image and content vertically */
-    justify-content: space-between; /* Space between image and content */
-    align-items: center; /* Center both image and content horizontally */
-    padding: 20px; /* Adjust padding as needed */
+    padding-top: 0px;
+    padding-bottom: 60px;
+    flex-direction: row; /* Ensure it is in row layout for small screens */
+    justify-content: space-between;
+    align-items: center; /* Center everything vertically */
   }
 
-  .hero-image {
-    display: block;
-    width: 40%; /* Adjust image width as needed */
-    max-width: 180px;
+  .hero .hero-image {
+    width: 100%; /* Adjust image width */
+    max-width: 320px; /* Limit the image size */
+    padding-right: 0;
     margin-bottom: 20px; /* Add spacing below the image */
+    margin-left: auto;
+    margin-right: auto; /* Center the image horizontally */
   }
 
-  .hero-content {
-    text-align: center; /* Center text within the content section */
+  .hero .hero-content {
+    width: 100%; /* Adjust the width for the text content */
+    text-align: left; /* Align the text to the left */
   }
 
-  /* Text and Button */
-  .hero-text h1 {
-    font-size: 22px;
-    margin-bottom: 8px;
+  .hero .hero-text p {
+    font-size: 18px; /* Set the paragraph font size */
   }
 
-  .hero-text h2 {
-    font-size: 16px;
+  .hero .hero-text h1 {
+    font-size: 35px; /* Set the font size for h1 */
   }
 
-  .hero-btn {
-    margin-top: 15px;
+  .hero .hero-text h2 {
+    font-size: 22px; /* Set the font size for h2 */
+    height: 22px; /* Ensure the height is consistent */
   }
 
-  .hero-btn .btn {
-    padding: 8px 16px;
+  .hero .hero-btn .btn {
+    padding: 10px 15px; /* Adjust button padding */
+    letter-spacing: 1px;
   }
 }
 
