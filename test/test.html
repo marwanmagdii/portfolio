@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Responsive Card Component</title>
+<link rel="stylesheet" href="test.css"> 
+</head>
+<body>
+<p>hiiiiiiii</p>
+<div class="card-container"> 
+  <div class="card" onclick="togglePreview1()"> 
+    <img src="../img/portfolio-1.jpg" alt="Card Image">
+    <div class="card-content">
+      <h3 class="card-title">Card Title 1</h3>
+      <a href="#" class="preview-button">Preview</a> 
+    </div>
+  </div>
+
+  <div class="card" onclick="togglePreview2()"> 
+    <img src="../img/portfolio-2.jpg" alt="Card Image 2"> 
+    <div class="card-content">
+      <h3 class="card-title">Card Title 2</h3>
+      <a href="#" class="preview-button">Preview</a> 
+    </div>
+  </div>
+</div>
+
+<div class="preview" id="preview1"> 
+  <div class="preview-overlay" onclick="closePreview1()"></div>
+  <div class="preview-content">
+    <div class="preview-image">
+      <img src="../img/portfolio-1.jpg" alt="Card Image">
+    </div>
+    <div class="preview-text">
+      <h3 class="preview-title">Card Title 1</h3>
+      <p class="preview-description">This is a brief description of the card content.</p>
+    </div>
+  </div>
+</div>
+
+<div class="preview" id="preview2"> 
+  <div class="preview-overlay" onclick="closePreview2()"></div>
+  <div class="preview-content">
+    <div class="preview-image">
+      <img src="../img/portfolio-2.jpg" alt="Card Image 2"> 
+    </div>
+    <div class="preview-text">
+      <h3 class="preview-title">Card Title 2</h3>
+      <p class="preview-description">This is a brief description of the card content.</p>
+    </div>
+  </div>
+</div>
+<p>hiiii</p>
+
+<script src="test.js"></script>
+
+</body>
+</html>
