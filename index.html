@@ -78,7 +78,7 @@
             <div class="hero-content">
               <div class="hero-text">
                 <p>I'm</p>
-                <h1>Marwan Magdy hsssss</h1>
+                <h1>Marwan Magdy</h1>
                 <h2></h2>
                 <div class="typed-text">QA/QC Software Tester</div>
               </div>
@@ -347,11 +347,15 @@ In this project, I was testing the banking website and two mobile apps—Banki M
 
         const preview = document.getElementById(previewId);
         preview.classList.add("show");
+          document.body.style.overflow = "hidden"; // Disable scrolling
+
       }
 
       function closePreview(previewId) {
         const preview = document.getElementById(previewId);
         preview.classList.remove("show");
+          document.body.style.overflow = "auto"; // Re-enable scrolling
+
       }
     </script>
     <!-- Portfolio Start 
