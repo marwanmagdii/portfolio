@@ -443,7 +443,7 @@ a:focus {
 
   .hero .hero-image {
     width: 100%; /* Adjust image width */
-    max-width: 320px; /* Limit the image size */
+    max-width: 360px; /* Limit the image size */
     padding-right: 0;
     margin-bottom: 20px; /* Add spacing below the image */
     margin-left: auto;
