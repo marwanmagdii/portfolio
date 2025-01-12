@@ -327,24 +327,22 @@ a:focus {
   color: #ffffff;
 }
 
-.hero .hero-btn2 .btn,
 .hero .hero-btn .btn {
   margin-top: 35px;
   color: #006466;
   background: #ffffff;
   box-shadow: inset 0 0 0 50px #ffffff;
   border-radius: 10px;
-   width: 155px;
+  width: 185px;
+  
 }
 
-.hero .hero-btn2 .btn:hover,
 .hero .hero-btn .btn:hover {
   color: #ffffff;
   background: transparent;
   box-shadow: inset 0 0 0 0 #ffffff;
   border-color: #ffffff;
 }
-.hero .hero-btn2 .btn:first-child,
 .hero .hero-btn .btn:first-child {
   margin-right: 10px;
 }
@@ -370,7 +368,7 @@ a:focus {
     font-size: 25px;
     height: 25px;
   }
-.hero .hero-btn2 .btn,
+
   .hero .hero-btn .btn {
     padding: 12px 30px;
     letter-spacing: 1px;
@@ -409,7 +407,7 @@ a:focus {
     font-size: 22px;
     height: 22px;
   }
-.hero .hero-btn2 .btn,
+
   .hero .hero-btn .btn {
     padding: 10px 15px;
     letter-spacing: 1px;
@@ -429,7 +427,7 @@ a:focus {
     font-size: 18px;
     height: 18px;
   }
-.hero .hero-btn2 .btn,
+
   .hero .hero-btn .btn {
     padding: 8px 10px;
     letter-spacing: 0;
@@ -470,14 +468,14 @@ a:focus {
     font-size: 22px; /* Set the font size for h2 */
     height: 22px; /* Ensure the height is consistent */
   }
-.hero .hero-btn2 .btn,
+
   .hero .hero-btn .btn {
     padding: 10px 15px; /* Adjust button padding */
     letter-spacing: 1px;
+      width: 140px;
+
   }
 }
-
-
 
 /*******************************/
 /******* Section Header ********/

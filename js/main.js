@@ -29,7 +29,7 @@
 
   //contact me btn
   $(document).ready(function () {
-    $(".hero .hero-btn .btn").on("click", function (event) {
+    $("#contact-btn").on("click", function (event) {
       event.preventDefault();
       const emailLink = `mailto:marwanmagdy680@gmail.com`;
       window.location.href = emailLink;
