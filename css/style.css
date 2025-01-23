@@ -334,7 +334,6 @@ a:focus {
   box-shadow: inset 0 0 0 50px #ffffff;
   border-radius: 10px;
   width: 185px;
-  
 }
 
 .hero .hero-btn .btn:hover {
@@ -472,8 +471,7 @@ a:focus {
   .hero .hero-btn .btn {
     padding: 10px 15px; /* Adjust button padding */
     letter-spacing: 1px;
-      width: 140px;
-
+    width: 140px;
   }
 }
 
