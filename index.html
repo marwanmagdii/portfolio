@@ -93,7 +93,7 @@
 
                 <a
                   class="btn download-btn"
-                  href="img/Marwa Magdy resumee.pdf"
+                  href="img/Marwan Magdy CV.pdf"
                   download
                   >Download CV</a
                 >
@@ -286,13 +286,43 @@
         </div>
       </div>
       <!-- Card Section -->
+       <!-- first two cards -->
       <div class="card-container">
         <div class="card" onclick="togglePreview('preview1')">
+          <img src="img/banki wallet.jpg" alt="Credit Agricole Image" />
+          <div class="card-content">
+            <h3 class="card-title">
+              QA and Testing for Banki Wallet
+              <br>
+              <b>for Credit Agricole Egypt Bank</b
+              >
+            </h3>
+            <div class="button-container">
+              <a>Preview</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="togglePreview('preview2')">
+          <img src="img/banki mobile .jpg" alt="SauceLabs Image" />
+          <div class="card-content">
+            <h3 class="card-title">QA and Testing for Banki Mobile
+              <br>
+              <b>for Credit Agricole Egypt Bank</b
+              ></h3>
+            <div class="button-container">
+              <a>Preview</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- second two cards -->
+      <div class="card-container">
+        <div class="card" onclick="togglePreview('preview3')">
           <img src="img/CAE.jpg" alt="Credit Agricole Image" />
           <div class="card-content">
             <h3 class="card-title">
-              QA and Testing for Banking Website and Mobile Applications
-              <br />(Banki Mobile & Banki Wallet) <br /><b
+              QA and Testing for Banking Website<br /><b
                 >for Credit Agricole Egypt</b
               >
             </h3>
@@ -301,11 +331,9 @@
             </div>
           </div>
         </div>
-        <!--  href="#"
-                onclick="event.stopPropagation(); togglePreview('preview1')"
-                href="#"
-                onclick="event.stopPropagation(); togglePreview('preview2')" -->
-        <div class="card" onclick="togglePreview('preview2')">
+
+      
+        <div class="card" onclick="togglePreview('preview4')">
           <img src="img/sauce lab.png" alt="SauceLabs Image" />
           <div class="card-content">
             <h3 class="card-title">E-commerce Website Testing</h3>
@@ -317,6 +345,7 @@
       </div>
 
       <!-- Preview Modals -->
+       <!-- banki wallet -->
       <div
         id="preview1"
         class="card-preview"
@@ -328,42 +357,33 @@
           onclick="event.stopPropagation(); closePreview('preview1')"
         >
           <div class="preview-image">
-            <img src="img/CAE.jpg" alt="Credit Agricole Image" />
+            <img src="img/banki wallet.jpg" alt="Credit Agricole Image" />
           </div>
           <div class="preview-text">
             <h3 class="preview-title">
-              QA and Testing for <b>Banking Website</b> and
-              <b>Mobile Applications</b> <br />(Banki Mobile & Banki Wallet)
-              <br />
-              <b>for Credit Agricole Egypt</b>
+              QA and Testing for Banki Wallet
+             
+              <b>for Credit Agricole Egypt Bank</b
+              >
             </h3>
             <p class="preview-description">
               <b> Project Overview: </b><br />
-              In this project, I was testing the banking website and two mobile
-              apps—Banki Mobile and Banki Wallet. The goal was to make sure the
-              website and apps were secure, easy to use, and worked well.
+              Worked on testing Banki Wallet, focusing on ensuring its secure and efficient functionality for managing digital payments and transactions.
 
-              <br />
+              <br /><br>
               <b>Key Contributions: </b> <br />
 
-              1. Performed manual testing on the website and both mobile apps to
-              ensure they worked properly. <br />
-              2. Tested the security of the website and apps to find any
-              potential vulnerabilities.<br />
-              3. Developed and ran test cases to check the features of the
-              website and apps.<br />
-              4. Participated in Agile sprints to give feedback and make
-              improvements <br />
-              5. Found bugs during testing and reported them with clear steps
-              <br />
-              6. Evaluated the UI/UX to ensure the website and apps provided a
-              smooth and user-friendly experience<br />
+             1. Performed manual testing to validate the wallet's core functionalities. <br>
+2. Focused on payment gateway testing to ensure seamless transactions.<br>
+3. Developed and ran test cases to verify wallet operations and ensure compliance with banking standards.<br>
+4. Detected and reported issues related to security, functionality, and performance.<br>
+5. Collaborated with Agile teams to provide actionable feedback during sprint cycles.
             </p>
           </div>
         </div>
       </div>
-
-      <div
+<!-- banki mobile -->
+     <div
         id="preview2"
         class="card-preview"
         onclick="closePreview('preview2')"
@@ -371,7 +391,76 @@
         <div class="preview-overlay"></div>
         <div
           class="preview-content"
-          onclick="event.stopPropagation(); closePreview('preview2')"
+          onclick="event.stopPropagation(); closePreview('preview1')"
+        >
+          <div class="preview-image">
+            <img src="img/banki mobile .jpg" alt="Credit Agricole Image" />
+          </div>
+          <div class="preview-text">
+            <h3 class="preview-title">
+              QA and Testing for Banki Mobile
+            
+             <b> for Credit Agricole Egypt Bank</b
+              >
+            </h3>
+            <p class="preview-description">
+              <b> Project Overview: </b><br />
+Tested the Banki Mobile application for Crédit Agricole Egypt to ensure reliability, security, and a user-friendly experience.
+              <br /><br>
+              <b>Key Contributions: </b> <br />
+1. Performed manual testing to validate app functionality. <br>
+2. Designed and executed test cases for feature validation.<br>
+3. Provided feedback during Agile sprints to improve app quality.<br>
+4. Reported bugs with detailed reproduction steps for resolution.<br>
+5. Reviewed UI/UX to ensure smooth and intuitive navigation.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- bank website -->
+    <div
+        id="preview3"
+        class="card-preview"
+        onclick="closePreview('preview3')"
+      >
+        <div class="preview-overlay"></div>
+        <div
+          class="preview-content"
+          onclick="event.stopPropagation(); closePreview('preview3')"
+        >
+          <div class="preview-image">
+            <img src="img/CAE.jpg" alt="SauceLabs Image" />
+          </div>
+          <div class="preview-text">
+            <h3 class="preview-title">QA and Testing for Banking Website <b
+                >for Credit Agricole Egypt</b
+              ></h3>
+            <p class="preview-description">
+              <b> Project Overview: </b><br />
+              Tested the Crédit Agricole Egypt banking website to ensure it delivered a secure, functional, and user-friendly experience for customers.
+              <br /><br />
+              <b>Key Contributions: </b> <br />
+
+              1. Performed manual testing to validate site functionality.
+2. Executed security testing to protect sensitive customer data. <br>
+3. Designed and executed test cases for feature validation.<br>
+4. Identified and reported bugs with detailed reproduction steps.<br>
+5. Actively participated in Agile sprints to enhance website quality.<br>
+6. Reviewed UI/UX for seamless and intuitive customer navigation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+        id="preview4"
+        class="card-preview"
+        onclick="closePreview('preview4')"
+      >
+        <div class="preview-overlay"></div>
+        <div
+          class="preview-content"
+          onclick="event.stopPropagation(); closePreview('preview4')"
         >
           <div class="preview-image">
             <img src="img/sauce lab.png" alt="SauceLabs Image" />
@@ -388,10 +477,13 @@
               <b>Key Contributions: </b> <br />
 
               1. Performed manual testing to check the website’s functionality
-              and usability. 2. Developed test plans and test cases to ensure
-              the website worked as expected. 3. Found bugs during testing and
-              reported them with clear steps to reproduce. 4. Evaluated the
-              UI/UX to ensure the website was user-friendly and intuitive.
+              and usability. <br />
+              2. Developed test plans and test cases to ensure
+              the website worked as expected. <br />
+              3. Found bugs during testing and
+              reported them with clear steps to reproduce. <br />
+              4. Evaluated the
+              UI/UX to ensure the website was user-friendly and intuitive.<br />
             </p>
           </div>
         </div>

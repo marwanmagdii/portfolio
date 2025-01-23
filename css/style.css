@@ -1479,7 +1479,7 @@ body {
 }
 
 .card {
-  width: 450px;
+  width: 500px;
   background-color: #006466;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1489,6 +1489,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
+  margin-bottom: 15px;
   text-align: center;
   cursor: pointer; /* Make entire card clickable */
   transition: transform 0.3s ease-in-out;
