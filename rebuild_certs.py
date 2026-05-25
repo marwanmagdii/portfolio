@@ -134,9 +134,9 @@ html = f"""<!DOCTYPE html>
   <div class="count-label" id="cnt">Showing all {len(CERTS)} certifications</div>
   <div class="grid" id="grid">{cards_html}</div>
 </main>
-<div class="modal-ov" id="ov" onclick="if(event.target===this)close()">
+<div class="modal-ov" id="ov" onclick="if(event.target===this)closeModal()">
   <div class="modal">
-    <button class="mclose" onclick="close()">✕</button>
+    <button class="mclose" onclick="closeModal()">✕</button>
     <div class="mpdf" id="mpdf"></div>
     <div class="mbody">
       <div class="mcat" id="mcat"></div>
@@ -144,7 +144,7 @@ html = f"""<!DOCTYPE html>
       <div class="mmeta" id="mmeta"></div>
       <div class="msec">Key Learnings</div>
       <ul class="mlist" id="mlist"></ul>
-      <button class="mbtn-close" onclick="close()">Close</button>
+      <button class="mbtn-close" onclick="closeModal()">Close</button>
     </div>
   </div>
 </div>
@@ -169,7 +169,7 @@ function openD(i){{
   document.getElementById('ov').classList.add('open');
   document.body.style.overflow='hidden';
 }}
-function close(){{document.getElementById('ov').classList.remove('open');document.body.style.overflow='';document.getElementById('mpdf').innerHTML='';}}
+function closeModal(){{document.getElementById('ov').classList.remove('open');document.body.style.overflow='';document.getElementById('mpdf').innerHTML='';}}
 let curCat='all';
 function filt(cat,btn){{curCat=cat;document.querySelectorAll('.fb').forEach(b=>b.className='fb');btn.className='fb on-'+cat;applyF();}}
 function search(q){{applyF();}}
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded',()=>{{
   fetch('footer.html').then(r=>r.text()).then(d=>document.getElementById('foot-ph').innerHTML=d);
   const obs=new IntersectionObserver(es=>{{es.forEach(e=>{{if(e.isIntersecting)e.target.classList.add('active');}});}},{{threshold:.07}});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-  document.addEventListener('keydown',e=>{{if(e.key==='Escape')close();}});
+  document.addEventListener('keydown',e=>{{if(e.key==='Escape')closeModal();}});
 }});
 </script>
 </body></html>"""
