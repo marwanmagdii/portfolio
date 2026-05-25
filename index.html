@@ -133,7 +133,23 @@
             .hero-cta { flex-direction: column; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
-    </style>
+    
+        .awards-row-1 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; align-items: stretch; }
+        .awards-side-col { display: grid; grid-template-rows: 1fr 1fr; gap: 1.25rem; height: 100%; }
+        .awards-row-2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+        .contact-grid-main { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+
+        @media (max-width: 1024px) {
+            .awards-row-1 { grid-template-columns: 1fr; }
+            .awards-row-2 { grid-template-columns: repeat(2, 1fr); }
+            .contact-grid-main { grid-template-columns: 1fr; gap: 2rem; }
+        }
+        @media (max-width: 768px) {
+            .awards-row-2 { grid-template-columns: 1fr; }
+            .awards-side-col { grid-template-rows: auto auto; height: auto; }
+            .hero-title { font-size: 3rem !important; }
+        }
+</style>
 </head>
 <body>
     <div class="bg-glow"></div>
@@ -216,7 +232,7 @@
         </div>
 
         <!-- ROW 1: Featured large + 2 side -->
-        <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:1.25rem;margin-bottom:1.25rem;align-items:stretch;">
+        <div class="awards-row-1">
           <!-- FEATURED: 1st Place EGYPES -->
           <a href="article-riadi.html" style="text-decoration:none;display:block;position:relative;border-radius:1.25rem;overflow:hidden;height:320px;border:1px solid rgba(255,255,255,.1);background:#0a0a12;group">
             <img src="assets/marwan_images/Accelerator Program at Flat6Labs/Selected for the Accelerator Program at Flat6Labs.jpeg" alt="Flat6Labs Accelerator" style="width:100%;height:100%;object-fit:cover;opacity:.75;transition:all .5s;display:block;">
@@ -228,7 +244,7 @@
             </div>
           </a>
           <!-- RIGHT COLUMN: 2 stacked -->
-          <div style="display:grid;grid-template-rows:1fr 1fr;gap:1.25rem;height:100%;">
+          <div class="awards-side-col">
             <a href="article-huawei.html" style="text-decoration:none;display:block;position:relative;border-radius:1.25rem;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:#0a0a12;height:150px;">
               <img src="assets/marwan_images/Huawei Developer Competition 2025 Northern Africa/Winning 2nd Place across North Africa at the Huawei Developer Competition 2025 Northern Africa.jpeg" alt="Huawei" style="width:100%;height:100%;object-fit:cover;opacity:.7;display:block;">
               <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.95) 0%,rgba(5,5,7,.3) 60%,transparent 100%);"></div>
@@ -249,7 +265,7 @@
         </div>
 
         <!-- ROW 2: 4 equal cards -->
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;">
+        <div class="awards-row-2">
           <a href="article-riadi.html" style="text-decoration:none;display:block;position:relative;border-radius:1.25rem;overflow:hidden;height:200px;border:1px solid rgba(255,255,255,.1);background:#0a0a12;">
             <img src="assets/marwan_images/Flat6Labs & Shell Intilaaqah Competition at EGYPES 2026/marwan magdy holding the prize.png" alt="EGYPES 2026" style="width:100%;height:100%;object-fit:cover;opacity:.7;display:block;">
             <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.95) 0%,rgba(5,5,7,.3) 60%,transparent 100%);"></div>
@@ -292,7 +308,7 @@
     <!-- ── CONNECT ── -->
     <div id="contact-section"></div>
     <section class="container reveal" style="padding:5rem 0;border-top:1px solid rgba(255,255,255,0.08);">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+        <div class="contact-grid-main">
             <div>
                 <span style="font-size:.8rem;text-transform:uppercase;letter-spacing:.2em;color:var(--color-brand-green);font-weight:600;display:block;margin-bottom:1rem;">Get in Touch</span>
                 <h2 style="font-family:var(--font-heading);font-size:clamp(2rem,4vw,3rem);letter-spacing:-.02em;margin-bottom:1.5rem;">Let's <em style="font-style:italic;background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Build</em> Together</h2>
