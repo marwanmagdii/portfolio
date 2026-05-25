@@ -159,7 +159,7 @@ function openD(i){{
   const c=CERTS[i],col=ACC[c.cat],rg=RG[c.cat];
   const el=document.getElementById('mpdf');
   if(isImg(c.thumb))el.innerHTML=`<img src="${{c.thumb}}" alt="${{c.title}}">`;
-  else if(c.pdf&&c.pdf.endsWith('.pdf'))el.innerHTML=`<iframe src="${{c.pdf}}" sandbox="allow-scripts allow-same-origin"></iframe>`;
+  else if(c.pdf&&c.pdf.endsWith('.pdf'))el.innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:#111;text-align:center;"><div style="font-size:3rem;margin-bottom:1rem;">📄</div><a href="${{c.pdf}}" target="_blank" style="background:#10b981;color:#000;padding:0.75rem 1.5rem;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.9rem;transition:transform 0.3s;">View Certificate PDF</a></div>`;
   else el.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#64748b;">No preview</div>';
   const mc=document.getElementById('mcat');
   mc.textContent=LBL[c.cat];mc.style.color=col;mc.style.borderColor=rg+'0.3)';mc.style.background=rg+'0.08)';
