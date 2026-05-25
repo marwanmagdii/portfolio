@@ -1,0 +1,248 @@
+html = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ventures | Marwan Magdy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050507;--surf:rgba(255,255,255,0.025);--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--text:#f1f5f9;--muted:#64748b;--sub:#94a3b8;--green:#10b981;--blue:#3b82f6;--purple:#8b5cf6;--head:'Playfair Display',serif;--body:'Outfit',sans-serif;--ease:cubic-bezier(.16,1,.3,1)}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}a{text-decoration:none;color:inherit}
+.amb{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.amb::before{content:'';position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.1) 0%,transparent 70%);top:-300px;right:-200px;animation:drift 24s ease-in-out infinite alternate}
+.amb::after{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.07) 0%,transparent 70%);bottom:-100px;left:-100px;animation:drift 20s ease-in-out infinite alternate-reverse}
+@keyframes drift{0%{transform:translate(0,0)}100%{transform:translate(40px,30px)}}
+.wrap{max-width:1280px;margin:0 auto;padding:0 5%;position:relative;z-index:1}
+
+/* HERO */
+.hero{padding:9rem 0 5rem;border-bottom:1px solid var(--border)}
+.hero-kicker{display:inline-flex;align-items:center;gap:.5rem;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);color:var(--green);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:.4rem 1rem;border-radius:50px;margin-bottom:1.5rem}
+.kicker-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:var(--head);font-size:clamp(3rem,7vw,6rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:1.2rem}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--green),var(--blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{color:var(--sub);font-size:1.15rem;max-width:560px;line-height:1.75;margin-bottom:2.5rem}
+.stats{display:flex;gap:3rem;flex-wrap:wrap}
+.stat-n{font-size:2.2rem;font-weight:900;line-height:1}
+.stat-l{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:.3rem}
+
+/* FILTER */
+.filter{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:2.5rem 0;border-bottom:1px solid var(--border)}
+.fb{padding:.55rem 1.4rem;border-radius:50px;border:1px solid var(--border2);color:var(--sub);font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;background:transparent;cursor:pointer;transition:all .25s var(--ease);font-family:var(--body)}
+.fb:hover{border-color:rgba(255,255,255,.25);color:var(--text)}
+.fb.on{background:var(--green);color:#000;border-color:var(--green);box-shadow:0 4px 20px rgba(16,185,129,.3)}
+
+/* FEATURED VENTURE */
+.featured{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:5rem 0;border-bottom:1px solid var(--border)}
+.feat-visual{position:relative;border-radius:1.5rem;overflow:hidden;height:500px;border:1px solid var(--border2);background:#0a0a12}
+.feat-visual img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .7s var(--ease),opacity .4s}
+.feat-visual:hover img{transform:scale(1.04);opacity:1}
+.feat-badge{position:absolute;top:1.25rem;left:1.25rem;background:linear-gradient(135deg,rgba(16,185,129,.95),rgba(16,185,129,.8));color:#000;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding:.4rem 1rem;border-radius:50px;backdrop-filter:blur(10px)}
+.feat-logo{position:absolute;bottom:1.25rem;right:1.25rem;width:64px;height:64px;border-radius:1rem;background:#fff;padding:.5rem;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.feat-logo img{width:100%;height:100%;object-fit:contain}
+.feat-content{}
+.feat-status{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:.75rem}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s ease infinite}
+.feat-title{font-family:var(--head);font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:1rem;letter-spacing:-.02em}
+.feat-desc{color:var(--sub);font-size:1rem;line-height:1.8;margin-bottom:1.5rem}
+.feat-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.tag{background:rgba(255,255,255,.04);border:1px solid var(--border2);color:var(--sub);font-size:.75rem;padding:.3rem .75rem;border-radius:6px}
+.feat-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;padding:1.25rem;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:1rem}
+.metric-n{font-size:1.4rem;font-weight:800;color:var(--text)}
+.metric-l{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.feat-cta{display:inline-flex;align-items:center;gap:.6rem;background:var(--green);color:#000;font-weight:700;font-size:.9rem;padding:.85rem 2rem;border-radius:50px;transition:all .3s var(--ease)}
+.feat-cta:hover{background:#0ea271;transform:translateX(4px);box-shadow:0 8px 25px rgba(16,185,129,.4)}
+.feat-cta svg{width:16px;height:16px;transition:transform .3s}
+.feat-cta:hover svg{transform:translateX(3px)}
+
+/* GRID */
+.section-hd{display:flex;align-items:center;justify-content:space-between;padding:4rem 0 2rem}
+.section-hd h2{font-family:var(--head);font-size:2rem;letter-spacing:-.02em}
+.ventures-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;padding-bottom:6rem}
+
+/* CARD */
+.vcard{background:var(--surf);border:1px solid var(--border);border-radius:1.25rem;overflow:hidden;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;display:flex;flex-direction:column}
+.vcard:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.16);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.vcard-img{height:200px;overflow:hidden;background:#0a0a12;position:relative}
+.vcard-img img{width:100%;height:100%;object-fit:cover;opacity:.8;transition:opacity .4s,transform .6s var(--ease)}
+.vcard:hover .vcard-img img{opacity:1;transform:scale(1.06)}
+.vcard-img.logo-bg{background:#fff;display:flex;align-items:center;justify-content:center;padding:2rem}
+.vcard-img.logo-bg img{object-fit:contain;width:80%;height:80%;opacity:1}
+.vcard-status-pill{position:absolute;top:.75rem;left:.75rem;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.28rem .7rem;border-radius:50px;border:1px solid}
+.active-pill{color:#10b981;border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.1)}
+.inactive-pill{color:#94a3b8;border-color:rgba(148,163,184,.3);background:rgba(148,163,184,.07)}
+.vcard-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.vcard-title{font-family:var(--head);font-size:1.2rem;line-height:1.3;margin-bottom:.5rem}
+.vcard:hover .vcard-title{color:var(--green)}
+.vcard-role{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:.6rem}
+.vcard-desc{color:var(--sub);font-size:.875rem;line-height:1.65;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:1rem}
+.vcard-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.vcard-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.06);padding-top:1rem}
+.vcard-year{font-size:.78rem;color:var(--muted)}
+.btn-learn{font-size:.8rem;font-weight:600;color:var(--green);display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s}
+.btn-learn:hover{gap:.6rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.active{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}
+
+@media(max-width:1024px){.ventures-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.featured{grid-template-columns:1fr}.feat-visual{height:280px}.ventures-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="amb"></div>
+<div id="nav-placeholder"></div>
+
+<main class="wrap">
+  <header class="hero reveal">
+    <div class="hero-kicker"><span class="kicker-dot"></span>Portfolio of Ventures</div>
+    <h1>Building Things<br>That <em>Matter</em></h1>
+    <p class="hero-sub">From early-stage startups to winning competition entries — each venture is a chapter in a larger story of building, learning, and leading.</p>
+    <div class="stats">
+      <div><div class="stat-n" style="background:linear-gradient(135deg,#10b981,#34d399);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">3</div><div class="stat-l">Active Ventures</div></div>
+      <div><div class="stat-n">7+</div><div class="stat-l">Awards Won</div></div>
+      <div><div class="stat-n">5</div><div class="stat-l">Startups Founded</div></div>
+    </div>
+  </header>
+
+  <div class="filter reveal d1">
+    <button class="fb on" onclick="filterV('all',this)">✦ All</button>
+    <button class="fb" onclick="filterV('active',this)">🟢 Active</button>
+    <button class="fb" onclick="filterV('sports',this)">⚽ Sports Tech</button>
+    <button class="fb" onclick="filterV('green',this)">🌿 Green Tech</button>
+    <button class="fb" onclick="filterV('fashion',this)">👕 Fashion</button>
+    <button class="fb" onclick="filterV('tourism',this)">✈️ Tourism</button>
+    <button class="fb" onclick="filterV('accessibility',this)">♿ Accessibility</button>
+  </div>
+
+  <!-- FEATURED: RIADI -->
+  <div class="featured reveal" data-v="sports active">
+    <div class="feat-visual">
+      <div class="feat-badge">🏆 Featured — 1st Place EGYPES 2026</div>
+      <img src="assets/marwan_images/Flat6Labs & Shell Intilaaqah Competition at EGYPES 2026/Winning 1st Place at the Flat6Labs & Shell Intilaaqah Competition at EGYPES 2026.jpeg" alt="Riadi at EGYPES 2026">
+      <div class="feat-logo"><img src="assets/logo/riadi/Riadi Logo.png" alt="Riadi Logo" onerror="this.parentElement.innerHTML='<span style=font-size:1.2rem;font-weight:900;color:#10b981>R</span>'"></div>
+    </div>
+    <div class="feat-content">
+      <div class="feat-status"><span class="status-dot"></span>Active · Backed by Flat6Labs</div>
+      <h2 class="feat-title">Riadi — Sports Tech Platform</h2>
+      <p class="feat-desc">Riadi is a B2B sports-tech ecosystem digitizing athletic performance, venue management, and tournament logic across the Arab world. Founded as Founder & CEO, Riadi has won 1st Place at EGYPES 2026 and been selected into the Flat6Labs Accelerator.</p>
+      <div class="feat-tags">
+        <span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">B2B SaaS</span><span class="tag">Sports Tech</span><span class="tag">Flat6Labs</span>
+      </div>
+      <div class="feat-metrics">
+        <div><div class="metric-n">🏆 1st</div><div class="metric-l">EGYPES 2026</div></div>
+        <div><div class="metric-n">🚀</div><div class="metric-l">Flat6Labs Accelerator</div></div>
+        <div><div class="metric-n">Nov 2024</div><div class="metric-l">Founded</div></div>
+      </div>
+      <a href="article-riadi.html" class="feat-cta">Read Full Story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+    </div>
+  </div>
+
+  <div class="section-hd reveal"><h2>All Ventures</h2><span id="v-count" style="color:var(--muted);font-size:.9rem;">4 ventures</span></div>
+
+  <div class="ventures-grid" id="vgrid">
+
+    <!-- GREEN PULSE -->
+    <a href="article-greenpulse.html" class="vcard reveal" data-v="green active">
+      <div class="vcard-img">
+        <img src="assets/marwan_images/NASA space Apps Cairo 2024/Global nominee and Local Winner at NASA space Apps Cairo 2024.jpeg" alt="Green Pulse">
+        <span class="vcard-status-pill active-pill">Active</span>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-role">Co-Founder &amp; Lead Developer</div>
+        <h3 class="vcard-title">Green Pulse</h3>
+        <p class="vcard-desc">A green-tech mobile app gamifying recycling in Egypt — connecting households to collection services with a reward system. Also the team name behind NASA Space Apps Cairo 2024 Local Winner &amp; Global Nominee.</p>
+        <div class="vcard-tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Climate Tech</span><span class="tag">🌍 NASA Nominee</span></div>
+        <div class="vcard-footer"><span class="vcard-year">2024</span><span class="btn-learn">Learn More →</span></div>
+      </div>
+    </a>
+
+    <!-- JUDHUR -->
+    <a href="article-judhur.html" class="vcard reveal d1" data-v="tourism active">
+      <div class="vcard-img logo-bg">
+        <img src="assets/logo/enpact/enpact logo.png" alt="Judhur — enpact">
+        <span class="vcard-status-pill active-pill" style="top:.75rem;left:.75rem;position:absolute;">Active</span>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-role">Founder</div>
+        <h3 class="vcard-title">Judhur</h3>
+        <p class="vcard-desc">Connecting tourists with rural Egyptian communities for immersive, sustainable travel experiences. Selected from 100+ ideas into the ETENA Tourism Idea Marathon pre-incubation by enpact &amp; TUI Care Foundation.</p>
+        <div class="vcard-tags"><span class="tag">Sustainable Tourism</span><span class="tag">enpact</span><span class="tag">Pre-Incubation</span></div>
+        <div class="vcard-footer"><span class="vcard-year">2024 – Present</span><span class="btn-learn">Learn More →</span></div>
+      </div>
+    </a>
+
+    <!-- GARNET -->
+    <a href="article-garnet.html" class="vcard reveal d2" data-v="fashion">
+      <div class="vcard-img">
+        <img src="assets/logo/garnet/images/garnet black.jpg" alt="Garnet_eg">
+        <span class="vcard-status-pill inactive-pill">Concluded</span>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-role">Co-Founder &amp; Business Developer</div>
+        <h3 class="vcard-title">Garnet_eg</h3>
+        <p class="vcard-desc">One of Egypt's first premium local streetwear brands. Pioneered the oversized, Egyptian-made fashion movement starting in 2022 — before the local scene matured. Original designs, premium fabrics, authentic identity.</p>
+        <div class="vcard-tags"><span class="tag">Fashion</span><span class="tag">E-Commerce</span><span class="tag">Pioneer Brand</span><span class="tag">2022</span></div>
+        <div class="vcard-footer"><span class="vcard-year">2022 – 2025</span><span class="btn-learn">Learn More →</span></div>
+      </div>
+    </a>
+
+    <!-- UNBOUNDED -->
+    <a href="article-unbounded.html" class="vcard reveal" data-v="accessibility">
+      <div class="vcard-img">
+        <img src="assets/logo/unbounded/unbounded logo.jpg" alt="Unbounded" style="object-fit:contain;background:#fff;padding:2rem;">
+        <span class="vcard-status-pill inactive-pill">Concluded</span>
+      </div>
+      <div class="vcard-body">
+        <div class="vcard-role">Lead Developer &amp; Team Leader</div>
+        <h3 class="vcard-title">Unbounded</h3>
+        <p class="vcard-desc">Accessibility-first Flutter &amp; Firebase app connecting individuals with disabilities to equal job opportunities. Won 2nd Place at Crédit Agricole Egypt Green ESG Contest 2023.</p>
+        <div class="vcard-tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Accessibility</span><span class="tag">🥈 2nd Place</span></div>
+        <div class="vcard-footer"><span class="vcard-year">Aug – Nov 2023</span><span class="btn-learn">Learn More →</span></div>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<div id="footer-placeholder"></div>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  fetch('nav.html').then(r=>r.text()).then(d=>{
+    const t=document.createElement('div');t.innerHTML=d;
+    const ph=document.getElementById('nav-placeholder');
+    while(t.firstChild){const c=t.firstChild;if(c.tagName==='SCRIPT'){const s=document.createElement('script');s.textContent=c.textContent;document.body.appendChild(s);t.removeChild(c);}else ph.appendChild(c);}
+  });
+  fetch('footer.html').then(r=>r.text()).then(d=>document.getElementById('footer-placeholder').innerHTML=d);
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active');});},{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+});
+
+function filterV(cat,btn){
+  document.querySelectorAll('.fb').forEach(b=>{b.className='fb';});
+  btn.classList.add('on');
+  const cards=[...document.querySelectorAll('#vgrid .vcard')];
+  const featured=document.querySelector('.featured');
+  let vis=0;
+  if(featured){
+    const fv=featured.dataset.v||'';
+    featured.style.display=(cat==='all'||fv.includes(cat))?'grid':'none';
+  }
+  cards.forEach(c=>{
+    const cv=c.dataset.v||'';
+    const show=cat==='all'||cv.includes(cat);
+    c.style.display=show?'flex':'none';
+    if(show)vis++;
+  });
+  document.getElementById('v-count').textContent=vis+' venture'+(vis!==1?'s':'');
+}
+</script>
+</body>
+</html>"""
+
+with open('ventures.html','w',encoding='utf-8') as f:
+    f.write(html)
+print("ventures.html rebuilt")

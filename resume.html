@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwan Magdy — Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #10b981;
+            --blue: #3b82f6;
+            --bg: #030305;
+            --surface: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.1);
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+        * { margin:0;padding:0;box-sizing:border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; line-height: 1.6; }
+
+        /* PRINT STYLES */
+        @media print {
+            body { background: #fff; color: #000; }
+            .no-print { display: none !important; }
+            .resume-wrap { box-shadow: none; border: none; }
+            a { color: #000; }
+            .tag { border: 1px solid #ccc !important; color: #333 !important; background: #f5f5f5 !important; }
+            .section-line { border-color: #ddd !important; }
+            .role-badge { background: #f0fdf4 !important; color: #166534 !important; border-color: #bbf7d0 !important; }
+        }
+
+        .page-bg { min-height: 100vh; padding: 3rem 1rem; background: radial-gradient(ellipse at 20% 0%, rgba(16,185,129,0.05) 0%, transparent 60%), radial-gradient(ellipse at 80% 100%, rgba(59,130,246,0.05) 0%, transparent 60%); }
+
+        .resume-wrap { max-width: 860px; margin: 0 auto; background: rgba(10,10,15,0.95); border: 1px solid var(--border); border-radius: 1.5rem; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.6); }
+
+        /* HEADER */
+        .r-header { background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(59,130,246,0.05) 100%); border-bottom: 1px solid var(--border); padding: 2.5rem 3rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; }
+        .r-name { font-family: 'Playfair Display', serif; font-size: 2.8rem; letter-spacing: -0.02em; background: linear-gradient(135deg, #fff 40%, var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .r-title { font-size: 1rem; color: var(--green); font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin: 0.4rem 0 1rem; }
+        .r-tagline { color: var(--muted); font-size: 0.95rem; max-width: 480px; line-height: 1.7; }
+        .r-contact { text-align: right; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.82rem; color: var(--muted); }
+        .r-contact a { color: var(--green); text-decoration: none; }
+        .r-contact a:hover { text-decoration: underline; }
+
+        /* BADGES */
+        .badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
+        .badge { display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: var(--green); padding: 0.3rem 0.7rem; border-radius: 50px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; }
+        .badge.blue { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.3); color: var(--blue); }
+
+        /* BODY */
+        .r-body { padding: 2.5rem 3rem; display: grid; grid-template-columns: 1fr 300px; gap: 2.5rem; }
+
+        /* SECTIONS */
+        .section { margin-bottom: 2rem; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #fff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+        .section-line { border: none; border-top: 1px solid var(--border); margin: 0.5rem 0 1rem; }
+
+        /* EXPERIENCE */
+        .exp-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .exp-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+        .exp-role { font-weight: 700; font-size: 0.95rem; color: #fff; }
+        .exp-company { font-size: 0.85rem; color: var(--green); font-weight: 600; }
+        .exp-date { font-size: 0.75rem; color: var(--muted); white-space: nowrap; margin-top: 0.2rem; }
+        .role-badge { display: inline-block; font-size: 0.68rem; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: var(--green); padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 600; margin-left: 0.4rem; vertical-align: middle; }
+        .exp-desc { margin-top: 0.5rem; font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+        .exp-desc ul { list-style: none; padding: 0; }
+        .exp-desc li { position: relative; padding-left: 1rem; margin-bottom: 0.3rem; }
+        .exp-desc li::before { content: '›'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+        /* TAGS */
+        .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+        .tag { font-size: 0.7rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; padding: 0.2rem 0.55rem; border-radius: 4px; font-weight: 500; display: inline-flex; align-items: center; gap: 0.3rem; }
+        .tag img { width: 11px; height: 11px; }
+
+        /* SKILLS SIDEBAR */
+        .skill-group { margin-bottom: 1.2rem; }
+        .skill-group-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; margin-bottom: 0.5rem; }
+
+        /* CERT GRID */
+        .cert-list { font-size: 0.78rem; color: var(--muted); }
+        .cert-list li { padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; }
+        .cert-list li:last-child { border-bottom: none; }
+        .cert-name { color: #e2e8f0; }
+        .cert-date { color: var(--green); font-weight: 600; white-space: nowrap; margin-left: 0.5rem; }
+
+        /* AWARDS */
+        .award-item { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 0.7rem; font-size: 0.82rem; }
+        .award-icon { font-size: 1rem; flex-shrink: 0; }
+        .award-title { color: #fff; font-weight: 600; }
+        .award-org { color: var(--muted); font-size: 0.75rem; }
+
+        /* PRINT BTN */
+        .print-btn { display: flex; justify-content: center; padding: 1.5rem; gap: 1rem; }
+        .btn { padding: 0.6rem 1.5rem; border-radius: 50px; font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; }
+        .btn-primary { background: var(--green); color: #000; }
+        .btn-primary:hover { background: #0ea574; transform: translateY(-1px); }
+        .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+        .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+
+        @media (max-width: 700px) {
+            .r-header { grid-template-columns: 1fr; }
+            .r-contact { text-align: left; }
+            .r-body { grid-template-columns: 1fr; }
+            .r-wrap { padding: 1.5rem; }
+            .r-header { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-bg">
+    <div class="print-btn no-print">
+        <button class="btn btn-ghost" onclick="window.location.href='about.html'">← Back to Portfolio</button>
+        <button class="btn btn-primary" onclick="window.print()">🖨 Print / Save as PDF</button>
+    </div>
+
+    <div class="resume-wrap">
+        <!-- HEADER -->
+        <header class="r-header">
+            <div>
+                <div class="r-name">Marwan Magdy</div>
+                <div class="r-title">Technical Founder · Software Engineer · Startup Executive</div>
+                <div class="r-tagline">Building Riadi — a Flat6Labs-backed sports-tech platform. 7× hackathon & contest winner. McKinsey Forward Graduate. Engineer by instinct, builder by choice.</div>
+                <div class="badges">
+                    <span class="badge">🏆 Flat6Labs Backed</span>
+                    <span class="badge">🎓 McKinsey Forward</span>
+                    <span class="badge blue">⚡ Prompt Engineer</span>
+                    <span class="badge blue">🚀 Vibe Coding</span>
+                    <span class="badge">🌍 NASA Global Nominee</span>
+                </div>
+            </div>
+            <div class="r-contact">
+                <span>📍 Cairo, Egypt</span>
+                <span>✉️ <a href="mailto:marwan@riadiapp.com">marwan@riadiapp.com</a></span>
+                <span>🌐 <a href="https://riadiapp.com">riadiapp.com</a></span>
+                <span>📱 Riadi App</span>
+            </div>
+        </header>
+
+        <div class="r-body">
+            <!-- LEFT COLUMN -->
+            <div>
+                <!-- EXPERIENCE -->
+                <div class="section">
+                    <h2 class="section-title">&#128188; Experience</h2>
+                    <hr class="section-line">
+
+                    <!-- 1. Riadi -->
+                    <div class="exp-item">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">Founder & CEO <span class="role-badge">🏆 1st Place EGYPES</span></div>
+                                <div class="exp-company">Riadi &mdash; Sports Tech</div>
+                            </div>
+                            <div class="exp-date">Nov 2024 &ndash; Present &middot; Cairo</div>
+                        </div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Building a premier sports-tech ecosystem digitizing venues, tournaments & athlete performance across the Arab world</li>
+                                <li>Won 1st Place at EGYPES 2026 (Flat6Labs + Shell Intilaaqah); secured startup backing</li>
+                                <li>Drives B2B sales, investor pitches, partnership deals, and lean product iteration</li>
+                            </ul>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Sports Tech</span><span class="tag">B2B Sales</span><span class="tag">Flat6Labs</span><span class="tag">Flutter</span><span class="tag">Lean Canvas</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. ALX -->
+                    <div class="exp-item">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">Mentor & Coach</div>
+                                <div class="exp-company">ALX</div>
+                            </div>
+                            <div class="exp-date">Apr 2026 &ndash; Present</div>
+                        </div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Mentoring aspiring tech professionals within the ALX pan-African ecosystem</li>
+                                <li>Guiding them through software development, agile methodologies, and career navigation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                                        <!-- 2b. AIX -->
+                    <div class="exp-item">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">AI Technical Lead <span class="role-badge blue">&#129352; 2nd Place</span></div>
+                                <div class="exp-company">AIX &mdash; Huawei Developer Competition 2025</div>
+                            </div>
+                            <div class="exp-date">May 2025 &middot; Regional</div>
+                        </div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Led AI integration for the Huawei Developer Competition 2025 across Northern Africa (389 teams, 1,400+ participants, 10+ countries)</li>
+                                <li>Secured <strong>2nd Place</strong> &mdash; architected the product from concept to competition-ready</li>
+                            </ul>
+                        </div>
+                        <div class="tags"><span class="tag">AI Architecture</span><span class="tag">Huawei Cloud</span><span class="tag">Competition</span></div>
+                    </div>
+
+                    <!-- 3. Garnet -->
+                    <div class="exp-item">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">Co-Founder & Business Developer</div>
+                                <div class="exp-company">Garnet (Garnet_eg) &mdash; Streetwear Brand</div>
+                            </div>
+                            <div class="exp-date">Jan 2023 &ndash; Apr 2025</div>
+                        </div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Co-founded premium local Egyptian streetwear brand; managed business model & GTM strategy</li>
+                                <li>Built supplier partnerships and brand positioning in competitive local market</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 4. Judhur -->
+                    <div class="exp-item">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">Founder <span class="role-badge blue">ETENA Pre-Incubation</span></div>
+                                <div class="exp-company">Judhur (Juzur)</div>
+                            </div>
+                            <div class="exp-date">2024 &middot; Cairo</div>
+                        </div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Selected out of 100+ ideas for ETENA Tourism Idea Marathon powered by TUI Care Foundation & enpact</li>
+                                <li>Developed MVP connecting tourists to rural Egyptian communities for immersive, sustainable tours</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 5. Green Pulse -->
+                    <div class="exp-item">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">Co-Founder & Lead Developer</div>
+                                <div class="exp-company">Green Pulse &mdash; Recycling Tech Startup</div>
+                            </div>
+                            <div class="exp-date">2024 &middot; Cairo</div>
+                        </div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Co-founded mobile application focused on connecting households to recycling collections</li>
+                                <li>Green Pulse was also the team name used at NASA Space Apps Cairo 2024 (Local Winner & Global Nominee) for a separate climate tech solution</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 6. CAE -->
+                    <div class="exp-item">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">SQA Tester</div>
+                                <div class="exp-company">Credit Agricole Egypt</div>
+                            </div>
+                            <div class="exp-date">Jan &ndash; Feb 2024 &middot; On-site</div>
+                        </div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Tested Banki Mobile, Banki Wallet, and the CAE banking web platform</li>
+                                <li>Security, functional, and payment gateway testing for 3 live banking products</li>
+                            </ul>
+                        </div>
+                        <div class="tags"><span class="tag">Manual Testing</span><span class="tag">JIRA</span><span class="tag">Postman</span><span class="tag">Banking</span></div>
+                    </div>
+
+                    <!-- 7. Unbounded -->
+                    <div class="exp-item">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">Lead Developer & Team Leader <span class="role-badge blue">🥈 CAE ESG Contest</span></div>
+                                <div class="exp-company">Unbounded</div>
+                            </div>
+                            <div class="exp-date">Aug &ndash; Nov 2023 &middot; 4 mos</div>
+                        </div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Built Flutter + Firebase accessibility app connecting people with disabilities to jobs</li>
+                                <li>2nd place at Crédit Agricole Egypt's Green ESG Contest 2023</li>
+                            </ul>
+                        </div>
+                        <div class="tags"><span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"> Flutter</span><span class="tag">Firebase</span><span class="tag">Figma</span><span class="tag">Accessibility</span></div>
+                    </div>
+                </div>
+
+                <!-- EDUCATION -->
+                <div class="section">
+                    <h2 class="section-title">🎓 Education</h2>
+                    <hr class="section-line">
+                    <div class="exp-item">
+                        <div class="exp-top">
+                            <div>
+                                <div class="exp-role">Bachelor's in Computer Science</div>
+                                <div class="exp-company">Modern University for Technology & Information (MTI)</div>
+                            </div>
+                            <div class="exp-date">2020 – 2024</div>
+                        </div>
+                        <div class="exp-desc">
+                            Grade: <strong>Very Good</strong> · Graduation Project: <strong>A</strong><br>
+                            <em>Project:</em> Stock Price Prediction via Twitter Sentiment Analysis — ML + Deep Learning web app
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN / SIDEBAR -->
+            <div>
+                <!-- SKILLS -->
+                <div class="section">
+                    <h2 class="section-title">⚡ Skills</h2>
+                    <hr class="section-line">
+
+                    <div class="skill-group">
+                        <div class="skill-group-title">Mobile</div>
+                        <div class="tags">
+                            <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"> Flutter</span>
+                            <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"> Dart</span>
+                            <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"> Firebase</span>
+                            <span class="tag">BLoC/Provider</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group-title">Web</div>
+                        <div class="tags">
+                            <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"> HTML5</span>
+                            <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"> CSS3</span>
+                            <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"> JS</span>
+                            <span class="tag">⚡ Vibe Coding</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group-title">Backend & Languages</div>
+                        <div class="tags">
+                            <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"> Python</span>
+                            <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"> Java</span>
+                            <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"> C++</span>
+                            <span class="tag">ML / DL</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group-title">QA</div>
+                        <div class="tags">
+                            <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg"> Selenium</span>
+                            <span class="tag">Postman</span>
+                            <span class="tag">JMeter</span>
+                            <span class="tag">JIRA</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group-title">AI & Prompt Eng.</div>
+                        <div class="tags">
+                            <span class="tag">✨ Prompt Eng.</span>
+                            <span class="tag">LLM Integration</span>
+                            <span class="tag">Blockchain</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group-title">Design</div>
+                        <div class="tags">
+                            <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"> Figma</span>
+                            <span class="tag">Prototyping</span>
+                            <span class="tag">Accessibility</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group-title">Business</div>
+                        <div class="tags">
+                            <span class="tag">BMC / Lean Canvas</span>
+                            <span class="tag">B2B Sales</span>
+                            <span class="tag">Pitching</span>
+                            <span class="tag">GTM</span>
+                            <span class="tag">OKRs</span>
+                            <span class="tag">ESG</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AWARDS -->
+                <div class="section">
+                    <h2 class="section-title">&#127942; Achievement Summary</h2>
+                    <hr class="section-line">
+                    <div class="award-item">
+                        <span class="award-icon">&#127942;</span>
+                        <div><div class="award-title">1st Place &mdash; EGYPES 2026</div><div class="award-org">Flat6Labs + Shell Intilaaqah &middot; Riadi &middot; Feb 2026</div></div>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">&#129352;</span>
+                        <div><div class="award-title">2nd Place &mdash; Huawei Dev. Competition</div><div class="award-org">Northern Africa 2025 &middot; 389 teams &middot; Dec 2025</div></div>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">&#129352;</span>
+                        <div><div class="award-title">2nd Place &mdash; AI for Life Hackathon</div><div class="award-org">Cairo ICT 2025 &middot; Nov 2025</div></div>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">&#128640;</span>
+                        <div><div class="award-title">Selected into Flat6Labs Accelerator</div><div class="award-org">Riadi &middot; Dec 2026</div></div>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">&#127757;</span>
+                        <div><div class="award-title">Local Winner + Global Nominee</div><div class="award-org">NASA Space Apps Cairo 2024 &middot; Oct 2024</div></div>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">&#127808;</span>
+                        <div><div class="award-title">enpact Pre-Incubation Winner</div><div class="award-org">Judhur &middot; ETENA Tourism Marathon &middot; Apr 2025</div></div>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">&#129352;</span>
+                        <div><div class="award-title">2nd Place &mdash; CAE Green ESG Contest</div><div class="award-org">Cr&eacute;dit Agricole Egypt 2023</div></div>
+                    </div>
+                </div>
+
+                <!-- TOP CERTS -->
+                <div class="section">
+                    <h2 class="section-title">📜 Key Certifications</h2>
+                    <hr class="section-line">
+                    <ul class="cert-list" style="list-style:none;padding:0;">
+                        <li><span class="cert-name">McKinsey Forward</span><span class="cert-date">Sep 2024</span></li>
+                        <li><span class="cert-name">ALX Founder Academy Deep Dive</span><span class="cert-date">Oct 2024</span></li>
+                        <li><span class="cert-name">Mini MBA in Entrepreneurship</span><span class="cert-date">2023</span></li>
+                        <li><span class="cert-name">Flutter Mobile Dev — ITI</span><span class="cert-date">2023</span></li>
+                        <li><span class="cert-name">Software Tester — DEPI/AMIT</span><span class="cert-date">2024</span></li>
+                        <li><span class="cert-name">AI Intro — Zewail City</span><span class="cert-date">2023</span></li>
+                        <li><span class="cert-name">Blockchain I & II — Eyouth</span><span class="cert-date">2023</span></li>
+                        <li><span class="cert-name">Digital Marketing — Udacity</span><span class="cert-date">2023</span></li>
+                    </ul>
+                </div>
+
+                <!-- VOLUNTEER -->
+                <div class="section">
+                    <h2 class="section-title">❤️ Volunteer</h2>
+                    <hr class="section-line">
+                    <div style="font-size:0.82rem;color:var(--muted);">
+                        <strong style="color:#fff;">Egyptian Red Crescent</strong><br>
+                        Humanitarian aid, community service & emergency relief coordination
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="print-btn no-print">
+        <button class="btn btn-ghost" onclick="window.location.href='about.html'">← Back to Portfolio</button>
+        <button class="btn btn-primary" onclick="window.print()">🖨 Print / Save as PDF</button>
+    </div>
+</div>
+</body>
+</html>

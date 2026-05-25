@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience & Story | Marwan Magdy</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #030305;
+            --color-surface: rgba(15, 15, 20, 0.6); 
+            --color-text-primary: #f8fafc;
+            --color-text-secondary: #94a3b8;
+            --color-border: rgba(255, 255, 255, 0.2);
+            --color-brand-green: #10b981; 
+            --color-brand-blue: #3b82f6;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Outfit', sans-serif;
+            --spacing-lg: 6rem;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--color-bg); color: var(--color-text-primary); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+        
+        .bg-glow { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1; }
+        .bg-glow::before { content: ''; position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.1; width: 600px; height: 600px; background: var(--color-brand-green); top: -100px; right: -100px; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        
+        .page-header { text-align: center; padding: 12rem 0 4rem 0; border-bottom: 1px solid var(--color-border); }
+        .page-title { font-family: var(--font-heading); font-size: clamp(3rem, 5vw, 5rem); margin-bottom: 1rem; }
+        .gradient-text { background: linear-gradient(135deg, var(--color-brand-green), var(--color-brand-blue)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* STORY GRID */
+        .story-section { padding: var(--spacing-lg) 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .story-section.reverse { direction: rtl; }
+        .story-section.reverse > * { direction: ltr; }
+        
+        .story-content h2 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .story-content p { color: var(--color-text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
+        
+        .story-visual { position: relative; border-radius: 2rem; overflow: hidden; height: 500px; border: 1px solid var(--color-border); }
+        .story-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        
+        /* SKILLS OVERVIEW */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; padding: 4rem 0 6rem 0; }
+        .skill-col { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255,255,255,0.2); padding: 2.5rem; border-radius: 1.5rem; transition: transform 0.3s, border-color 0.3s; }
+        .skill-col:hover { transform: translateY(-5px); border-color: rgba(16,185,129,0.3); background: rgba(255,255,255,0.03); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .skill-col h3 { font-size: 1.3rem; color: #fff; margin-bottom: 2rem; font-family: var(--font-heading); display: flex; align-items: center; gap: 0.8rem; }
+        .skill-col h3::before { content: ''; display: block; width: 10px; height: 10px; border-radius: 50%; background: var(--color-brand-green); box-shadow: 0 0 10px var(--color-brand-green); }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .skill-tags span { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s; cursor: default; }
+        .skill-tags span:hover { background: rgba(16,185,129,0.1); color: var(--color-brand-green); border-color: rgba(16,185,129,0.3); transform: scale(1.05); }
+
+        /* TIMELINE (Experience) */
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; padding-left: 2rem; }
+        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: rgba(255,255,255,0.1); }
+        .timeline-item { position: relative; margin-bottom: 3.5rem; padding-left: 2.5rem; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-logo { position: absolute; left: -24px; top: 0; width: 48px; height: 48px; border-radius: 50%; background: var(--color-bg); border: 2px solid var(--color-brand-green); overflow: hidden; display: flex; align-items: center; justify-content: center; z-index: 10; padding: 4px; }
+        .timeline-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+        .timeline-content { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 2rem; transition: transform 0.3s, border-color 0.3s; }
+        .timeline-content:hover { background: rgba(255,255,255,0.03); transform: translateY(-3px); border-color: rgba(255,255,255,0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .tl-header { margin-bottom: 1.2rem; }
+        .tl-title { font-size: 1.3rem; color: #fff; margin-bottom: 0.2rem; font-weight: 600; }
+        .tl-company { font-size: 1rem; font-weight: 500; color: #fff; margin-bottom: 0.3rem; }
+        .tl-date { display: inline-block; font-size: 0.8rem; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+        .tl-desc { color: #cbd5e1; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .tl-desc ul { list-style: none; padding-left: 0; }
+        .tl-desc li { position: relative; padding-left: 1.2rem; margin-bottom: 0.8rem; }
+        .tl-desc li::before { content: '•'; position: absolute; left: 0; color: var(--color-brand-green); font-size: 1.2rem; line-height: 1.2; }
+        
+        .tl-media { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; }
+        .tl-media-box { width: 120px; height: 80px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; }
+        .tl-media-box img { width: 100%; height: 100%; object-fit: contain; opacity: 0.8; transition: opacity 0.3s, transform 0.3s; }
+        .tl-media-box:hover img { opacity: 1; transform: scale(1.05); }
+        .btn-preview { padding: 0.5rem 1.2rem; border: 1px solid rgba(16,185,129,0.5); color: var(--color-brand-green); background: rgba(16,185,129,0.05); border-radius: 50px; text-decoration: none; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s; }
+        .btn-preview:hover { background: var(--color-brand-green); color: #fff; border-color: var(--color-brand-green); transform: translateX(3px); }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s var(--ease-out); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 992px) {
+            .story-section { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .story-visual { height: 350px; }
+        }
+        @media (max-width: 768px) {
+            .timeline { padding-left: 1.5rem; }
+            .timeline-logo { left: -16px; width: 32px; height: 32px; border-width: 2px; }
+            .timeline-item { padding-left: 1.5rem; margin-bottom: 2.5rem; }
+            .timeline-content { padding: 1.5rem; }
+        }
+        /* PAGE NAV — STICKY SECTION PILLS */
+        .page-nav {
+            position: sticky; top: 80px; z-index: 100;
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(3,3,5,0.85); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            margin-bottom: 0;
+        }
+        .page-nav a {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.45rem 1.1rem; border-radius: 50px;
+            font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--color-text-secondary); border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03); text-decoration: none;
+            transition: all 0.25s var(--ease-out);
+        }
+        .page-nav a:hover { color: #fff; border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.07); }
+        .page-nav a.active { background: var(--color-brand-green); color: #000; border-color: var(--color-brand-green); box-shadow: 0 4px 15px rgba(16,185,129,0.35); }
+        .page-nav a .nav-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; opacity: 0.6; }
+        .page-nav a.active .nav-dot { opacity: 1; }
+        @media (max-width: 600px) { .page-nav { top: 65px; padding: 0.7rem 1rem; } .page-nav a { font-size: 0.7rem; padding: 0.4rem 0.8rem; } }
+
+        .timeline-track { position: relative; max-width: 900px; margin: 0 auto; padding-left: 2rem; }
+        .timeline-track::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: rgba(255,255,255,0.1); }
+        
+        .sk { display:inline-flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#cbd5e1;padding:0.35rem 0.75rem;border-radius:6px;font-size:0.78rem;font-weight:500; }
+        .sk-green { display:inline-flex;align-items:center;gap:0.4rem;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.35);color:var(--color-brand-green);padding:0.35rem 0.75rem;border-radius:6px;font-size:0.78rem;font-weight:700; }
+        .sk-card { background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.1);padding:2rem;border-radius:1.5rem;transition:all 0.35s; }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div id="nav-placeholder"></div>
+
+    <header class="page-header container reveal">
+        <h1 class="page-title"><span class="gradient-text">Experience</span> & Story</h1>
+        <p style="color: var(--color-text-secondary); font-size: 1.2rem;">Technical founder. Startup executive. Engineer by instinct, builder by choice.</p>
+    </header>
+
+    <!-- STICKY PAGE NAV -->
+    <nav class="page-nav" id="page-nav" aria-label="Page sections">
+        <a href="#section-story" class="active"><span class="nav-dot"></span>Story</a>
+        <a href="#section-experience"><span class="nav-dot"></span>Experience</a>
+        <a href="#section-education"><span class="nav-dot"></span>Education</a>
+        <a href="#section-skills"><span class="nav-dot"></span>Skills</a>
+        <a href="#section-volunteer"><span class="nav-dot"></span>Volunteer</a>
+    </nav>
+
+    <main class="container">
+        
+        <!-- FOUNDATION -->
+        <section id="section-story" class="story-section reveal">
+            <div class="story-content">
+                <span style="color: var(--color-brand-green); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 1rem;">01. The Foundation</span>
+                <h2>Rooted in Computer Science</h2>
+                <p>I graduated with a Bachelor's Degree in Computer Science from Modern University for Technology & Information (MTI), earning a Very Good GPA and an A-grade on my Graduation Project.</p>
+                <p>My academic foundation was built on complex problem-solving. For my graduation project, I engineered a stock price prediction model using Twitter sentiment analysis, leveraging Machine Learning and Deep Learning to bridge the gap between financial data and human emotion.</p>
+            </div>
+            <div class="story-visual">
+                <img src="assets/marwan_images/personal/main image.png" alt="Marwan Magdy">
+            </div>
+        </section>
+
+        <!-- THE DUAL IDENTITY -->
+        <section class="story-section reverse reveal">
+            <div class="story-content">
+                <span style="color: var(--color-brand-green); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 1rem;">02. Strategic Execution</span>
+                <h2>QA Architecture meets Business Strategy</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+                    I am a technical founder and startup executive focused on architecting highly scalable digital ecosystems. By combining deep engineering rigor with lean business strategy, I bridge the gap between complex software solutions and aggressive market growth.
+                </p>
+                <p>As a <strong>Founder and CEO</strong>, I use this technical rigor to architect startups that scale. From lean canvas modeling to B2B direct sales and pitching to investors at top-tier events, I know how to translate code into commercial value.</p>
+            </div>
+            <div class="story-visual">
+                <img src="assets/marwan_images/Flat6Labs & Shell Intilaaqah Competition at EGYPES 2026/Winning 1st Place at the Flat6Labs & Shell Intilaaqah Competition at EGYPES 2026.jpeg" alt="Execution">
+            </div>
+        </section>
+
+        <!-- EXPERIENCE TIMELINE -->
+        <section id="section-experience" class="reveal" style="border-top: 1px solid var(--color-border); padding-top: 4rem; padding-bottom: 4rem;">
+            <div class="story-content" style="margin-bottom: 3rem; text-align: center;">
+                <span style="color: var(--color-brand-green); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 1rem;">03. Professional Journey</span>
+                <h2 style="font-family: var(--font-heading); font-size: 2.5rem;">Experience</h2>
+            </div>
+            
+            <div class="timeline">
+                
+                <!-- 1. Riadi -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-logo" style="background: #fff;">
+                        <img src="assets/logo/riadi/logo-transparent.png" alt="Riadi">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Founder & CEO</h3>
+                            <div class="tl-company">Riadi &middot; Full-time</div>
+                            <span class="tl-date">Nov 2024 &ndash; Present</span>
+                        </div>
+                        <div class="tl-desc">
+                            <p style="margin-bottom: 1rem;">Leading the strategic vision, product architecture, and business development for Riadi, a premier sports-tech ecosystem designed to digitize athletic performance, venue management, and tournament logic across the Arab world.</p>
+                            <ul>
+                                <li>Won 1st Place at EGYPES 2026 (Flat6Labs + Shell Intilaaqah) &mdash; securing accelerator backing.</li>
+                                <li>Architecting a scalable mobile and web platform as the operational backbone for modern sports facilities.</li>
+                                <li>Driving B2B sales, negotiating partnerships, and pitching to investors at top-tier events.</li>
+                                <li>Executing lean canvas models to continuously adapt product-market fit and ensure sustainable growth.</li>
+                            </ul>
+                            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="ventures.html" class="btn-preview">Explore Venture ↗</a>
+                                <a href="article-riadi.html" class="btn-preview">Learn More ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. ALX -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-logo" style="background: #fff; padding: 4px;">
+                        <img src="assets/logo/alx/alx.svg" alt="ALX" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Mentor & Coach</h3>
+                            <div class="tl-company">ALX</div>
+                            <span class="tl-date">Apr 2026 &ndash; Present</span>
+                        </div>
+                        <div class="tl-desc">
+                            <p style="margin-bottom: 1rem;">Mentoring and coaching aspiring tech professionals within the ALX pan-African ecosystem, guiding them through software development concepts, agile methodologies, and career navigation.</p>
+                            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="article-alx.html" class="btn-preview">Learn More ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                                <!-- 2b. AIX (Huawei Competition) -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-logo" style="background:#fff; padding:4px;">
+                        <img src="assets/logo/aix/aix logo transpernt.png" alt="AIX" style="width:100%;height:100%;object-fit:contain;" >
+                    </div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">AI Technical Lead</h3>
+                            <div class="tl-company">AIX &mdash; Huawei Developer Competition 2025</div>
+                            <span class="tl-date">May 2025 &middot; Competition</span>
+                        </div>
+                        <div class="tl-desc">
+                            <p style="margin-bottom: 1rem;">Led the AI integration for the Huawei Developer Competition 2025, competing across Northern Africa with 389 teams, 1,400+ participants, and 10+ countries. Secured <strong>2nd Place</strong> regionally.</p>
+                            <ul>
+                                <li>Led AI architecture from concept to competition-ready product.</li>
+                                <li>Integrated Huawei Cloud AI services into a scalable system design.</li>
+                            </ul>
+                            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="article-huawei.html" class="btn-preview">Learn More ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Garnet -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-logo" style="background: var(--color-surface); font-weight: bold; color: #fff; font-size: 1.2rem;">G</div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Co-Founder & Business Developer</h3>
+                            <div class="tl-company">Garnet (Garnet_eg) &middot; Self-employed</div>
+                            <span class="tl-date">Jan 2023 &ndash; Apr 2025 &middot; 2 yrs 4 mos</span>
+                            <div style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 0.5rem;">Cairo, Egypt</div>
+                        </div>
+                        <div class="tl-desc">
+                            <p style="margin-bottom: 1rem;">Co-founded Garnet_eg, a local Egyptian premium streetwear brand, and as Business Developer drove its growth from concept to market. Led strategy, operations, and partnerships to establish the brand in the competitive Egyptian streetwear scene.</p>
+                            <ul>
+                                <li>Designed and executed the business model and growth strategy from day one.</li>
+                                <li>Analyzed market trends, customer behavior, and product opportunities to inform direction.</li>
+                                <li>Built strong partnerships with suppliers, manufacturers, and distributors.</li>
+                                <li>Planned product launches and coordinated with production teams.</li>
+                                <li>Strengthened brand positioning and visibility in the local streetwear market.</li>
+                            </ul>
+                            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="article-garnet.html" class="btn-preview">Learn More ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Judhur / ETENA -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-logo" style="background: #fff; padding: 4px;">
+                        <img src="assets/logo/enpact/enpact logo.png" alt="Enpact" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Founder</h3>
+                            <div class="tl-company">Judhur &middot; ETENA Pre-Incubation</div>
+                            <span class="tl-date">enpact &middot; TUI Care Foundation &middot; Startup Haus Cairo</span>
+                        </div>
+                        <div class="tl-desc">
+                            <p style="margin-bottom: 1rem;">Judhur is a digital application connecting tourists with local communities in rural Egypt, offering immersive tours, cooking classes, and handmade products &mdash; promoting sustainable tourism while empowering local businesses.</p>
+                            <ul>
+                                <li>Selected from <strong>over 100 applications</strong> into the ETENA Tourism Idea Marathon.</li>
+                                <li>From 25 competing teams, Judhur was chosen as one of the <strong>12 winning teams</strong> advancing to the pre-incubation phase.</li>
+                                <li>During pre-incubation: turned the idea into a <strong>working prototype</strong>; attended focused sessions on Market Strategy, Financial Modeling, Prototyping &amp; MVP Roadmap, and Startup Legalities.</li>
+                            </ul>
+                            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="article-judhur.html" class="btn-preview">Learn More ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Green Pulse -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-logo" style="background: #022c22; display:flex;align-items:center;justify-content:center;">
+                        <span style="font-size:1.3rem;">&#9851;</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Co-Founder & Lead Developer</h3>
+                            <div class="tl-company">Green Pulse &mdash; Green Tech &amp; Recycling Startup</div>
+                            <span class="tl-date">2024 &middot; Cairo, Egypt</span>
+                        </div>
+                        <div class="tl-desc">
+                            <p style="margin-bottom: 1rem;">Co-founded Green Pulse, a green tech mobile application built to help households collect and recycle waste easily. The app connects users with nearby recycling collection services, making recycling accessible and habitual for everyday Egyptians.</p>
+                            <ul>
+                                <li>Led end-to-end development of the recycling mobile app &mdash; from ideation to working product.</li>
+                                <li>Focused on accessible UI/UX design and a gamified reward system to encourage recycling habits.</li>
+                                <li>Green Pulse was also the team name used at <strong>NASA Space Apps Cairo 2024</strong> &mdash; winning Local Winner and Global Nominee recognition for a separate climate tech solution.</li>
+                            </ul>
+                            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="article-greenpulse.html" class="btn-preview">Learn More ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Credit Agricole Egypt -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-logo" style="background: #fff; padding: 4px;">
+                        <img src="assets/logo/cae/cae main logo.jpg" alt="Credit Agricole Egypt" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Software Quality Assurance Tester</h3>
+                            <div class="tl-company">Credit Agricole Egypt</div>
+                            <span class="tl-date">Jan 2024 &ndash; Feb 2024</span>
+                            <div style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 0.5rem;">Cairo, Egypt &middot; On-site</div>
+                        </div>
+                        <div class="tl-desc">
+                            <p style="margin-bottom: 1rem;">Performed manual tests for the "Banki Mobile" and "Banki Wallet" applications, as well as the bank's website, ensuring functionality and user satisfaction.</p>
+                            <ul>
+                                <li>Validated core functionalities of the digital wallet to manage seamless payments and transactions.</li>
+                                <li>Conducted extensive manual testing on the Banki Mobile application for reliability and security.</li>
+                                <li>Tested the primary CAE banking web platform to ensure a flawless, user-friendly customer experience.</li>
+                            </ul>
+                            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="article-cae.html" class="btn-preview">Learn More ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Unbounded -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-logo" style="background:#fff;padding:4px;"><img src="assets/logo/unbounded/unbounded logo.jpg" alt="Unbounded" style="width:100%;height:100%;object-fit:contain;border-radius:50%;"></div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Lead Developer & Team Leader</h3>
+                            <div class="tl-company">Unbounded</div>
+                            <span class="tl-date">Aug 2023 &ndash; Nov 2023 &middot; 4 mos</span>
+                            <div style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 0.5rem;">Cairo, Egypt &middot; &#129352; 2nd Place &mdash; CAE Green Contest 2023</div>
+                        </div>
+                        <div class="tl-desc">
+                            <p style="margin-bottom:1rem;">Built a Flutter + Firebase mobile app connecting individuals with disabilities to job opportunities, winning 2nd place at Crédit Agricole Egypt's CAE Green ESG Contest 2023.</p>
+                            <ul>
+                                <li>Designed accessibility-first UI with color-blindness themes and high-contrast typography.</li>
+                                <li>Led full development lifecycle from Figma wireframes to production-ready Flutter deployment.</li>
+                                <li>Pitched the product to a panel of judges, securing 2nd place.</li>
+                            </ul>
+                            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="article-unbounded.html" class="btn-preview">Learn More ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EDUCATION TIMELINE -->
+        <section id="section-education" class="reveal" style="border-top: 1px solid var(--color-border); padding-top: 4rem; padding-bottom: 4rem;">
+            <div class="story-content" style="margin-bottom: 3rem; text-align: center;">
+                <span style="color: var(--color-brand-green); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 1rem;">04. Academic Foundation</span>
+                <h2 style="font-family: var(--font-heading); font-size: 2.5rem;">Education</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-logo" style="background: #fff; padding: 4px;">
+                        <img src="assets/mti/mti-logo-light-roboto.png" alt="MTI" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Bachelor's in Computer Science</h3>
+                            <div class="tl-company">Modern University for Technology & Information (MTI)</div>
+                            <span class="tl-date">2020 &ndash; 2024</span>
+                        </div>
+                        <div class="tl-desc">
+                            <p style="margin-bottom: 0.5rem;"><strong>Grade:</strong> Very Good</p>
+                            <p style="margin-bottom: 1rem;"><strong>Graduation Project:</strong> A grade.</p>
+                            <p>Developed a stock price prediction website leveraging Twitter sentiment analysis. Applied Machine Learning and Deep Learning models to analyze social data and forecast market trends.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE ARSENAL -->
+        <section id="section-skills" class="reveal" style="border-top: 1px solid var(--color-border); padding-top: 4rem;">
+            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; text-align: center; margin-bottom: 0.8rem;">Technical Arsenal & Business Acumen</h2>
+            <p style="color: var(--color-text-secondary); text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">Built across real startups, hackathons, and international programs &mdash; not just courses.</p>
+            
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;padding:1rem 0 4rem 0;">
+                <div class="sk-card" onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(16,185,129,0.4)';" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <h3 style="font-family:var(--font-heading);font-size:1.2rem;color:#fff;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.7rem;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" width="24" height="24" alt=""> Mobile Development</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                        <span class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" width="13" height="13"> Flutter</span>
+                        <span class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" width="13" height="13"> Dart</span>
+                        <span class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="13" height="13"> Firebase</span>
+                        <span class="sk">Cross-Platform Dev</span>
+                        <span class="sk">State Management (Get / GetX)</span>
+                        <span class="sk-green">&#127941; ITI Certified</span>
+                    </div>
+                </div>
+                <div class="sk-card" onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(59,130,246,0.4)';" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <h3 style="font-family:var(--font-heading);font-size:1.2rem;color:#fff;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.7rem;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="24" height="24" alt=""> Web Development</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                        <span class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="13" height="13"> HTML5</span>
+                        <span class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="13" height="13"> CSS3</span>
+                        <span class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="13" height="13"> JavaScript</span>
+                        <span class="sk">Responsive &amp; Glassmorphism UI</span>
+                        <span class="sk">DOM &amp; IntersectionObserver</span>
+                        <span class="sk-green">&#9889; Vibe Coding</span>
+                    </div>
+                </div>
+                <div class="sk-card" onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(16,185,129,0.4)';" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <h3 style="font-family:var(--font-heading);font-size:1.2rem;color:#fff;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.7rem;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="24" height="24" alt=""> Backend &amp; Languages</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                        <span class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="13" height="13"> Python</span>
+                        <span class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="13" height="13"> Java</span>
+                        <span class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="13" height="13"> C++</span>
+                        <span class="sk">Machine Learning</span>
+                        <span class="sk">Deep Learning</span>
+                        <span class="sk">Twitter Sentiment Analysis</span>
+                    </div>
+                </div>
+                <div class="sk-card" onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(16,185,129,0.4)';" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <h3 style="font-family:var(--font-heading);font-size:1.2rem;color:#fff;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.7rem;">&#128305;&#65039; Quality Assurance</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                        <span class="sk">Manual &amp; Automated Testing</span>
+                        <span class="sk">Functional &amp; Regression Testing</span>
+                        <span class="sk">API Testing (Postman)</span>
+                        <span class="sk">Performance Testing (JMeter)</span>
+                        <span class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" width="13" height="13"> Selenium</span>
+                        <span class="sk">Bug Tracking (JIRA)</span>
+                        <span class="sk-green">&#127941; DEPI / AMIT Certified</span>
+                    </div>
+                </div>
+                <div class="sk-card" onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(16,185,129,0.4)';" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <h3 style="font-family:var(--font-heading);font-size:1.2rem;color:#fff;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.7rem;">&#129504; AI &amp; Prompt Engineering</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                        <span class="sk-green">&#10024; Prompt Engineer</span>
+                        <span class="sk">LLM Integration</span>
+                        <span class="sk">AI Product Architecture</span>
+                        <span class="sk">Blockchain Fundamentals</span>
+                        <span class="sk">AI Ecosystem Strategy</span>
+                        <span class="sk-green">&#9889; Vibe Coding</span>
+                        <span class="sk-green">&#127941; Zewail City &amp; Impact AI Certified</span>
+                    </div>
+                </div>
+                <div class="sk-card" onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(59,130,246,0.4)';" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <h3 style="font-family:var(--font-heading);font-size:1.2rem;color:#fff;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.7rem;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="24" height="24" alt=""> UI/UX &amp; Design</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                        <span class="sk"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="13" height="13"> Figma</span>
+                        <span class="sk">User Journey Mapping</span>
+                        <span class="sk">Accessibility-First Design</span>
+                        <span class="sk">Prototyping &amp; Wireframing</span>
+                        <span class="sk">Design Systems</span>
+                    </div>
+                </div>
+                <div class="sk-card" style="grid-column:1/-1;" onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(16,185,129,0.4)';" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.1)';">
+                    <h3 style="font-family:var(--font-heading);font-size:1.2rem;color:#fff;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.7rem;">&#128200; Business Strategy &amp; Entrepreneurship</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                        <span class="sk">Business Model Canvas</span>
+                        <span class="sk">Lean Canvas &amp; Startup Validation</span>
+                        <span class="sk">B2B Sales &amp; Partnership Development</span>
+                        <span class="sk">Investor Pitching</span>
+                        <span class="sk">Go-to-Market Strategy</span>
+                        <span class="sk">OKR &amp; Team Leadership</span>
+                        <span class="sk">Ecosystem Scaling</span>
+                        <span class="sk">ESG &amp; Sustainability Strategy</span>
+                        <span class="sk">Digital Marketing (Udacity)</span>
+                        <span class="sk">Business English (DEPI / OTO)</span>
+                        <span class="sk-green">&#127941; McKinsey Forward Graduate</span>
+                        <span class="sk-green">&#127941; Mini MBA in Entrepreneurship</span>
+                        <span class="sk-green">&#127941; ALX Founder Academy Deep Dive</span>
+                        <span class="sk-green">&#127941; TIEC Innov Egypt Program</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOLUNTEER SECTION -->
+        <section id="section-volunteer" class="container" style="padding: 6rem 0;">
+            <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
+                <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-brand-green); font-weight: 600; display: block; margin-bottom: 0.8rem;">Giving Back</span>
+                <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em;">Volunteer <span class="gradient-text">Work</span></h2>
+            </div>
+
+            <div class="timeline-track">
+                <div class="timeline-item reveal">
+                    <div class="timeline-logo" style="padding: 0; overflow: hidden; background: #fff;">
+                        <img src="assets/logo/Egyptian Red Crescent/Egyptian Red Crescent.jpeg" alt="Egyptian Red Crescent" style="width: 100%; height: 100%; object-fit: contain; padding: 4px;">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Volunteer</h3>
+                            <div class="tl-company">Egyptian Red Crescent</div>
+                            <span class="tl-date">Community Service &amp; Humanitarian Aid</span>
+                        </div>
+                        <div class="tl-desc">
+                            <p>Contributed to humanitarian and community service initiatives under the Egyptian Red Crescent, one of Egypt's leading civil society organizations. Supported outreach programs focused on social welfare, emergency relief coordination, and community empowerment across Egypt.</p>
+                            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="article-redcrescent.html" class="btn-preview">Learn More ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('nav.html').then(r => r.text()).then(data => {
+                const temp = document.createElement('div'); temp.innerHTML = data;
+                const ph = document.getElementById('nav-placeholder');
+                while (temp.firstChild) {
+                    const child = temp.firstChild;
+                    if (child.tagName === 'SCRIPT') {
+                        const s = document.createElement('script');
+                        s.textContent = child.textContent;
+                        document.body.appendChild(s);
+                        temp.removeChild(child);
+                    } else { ph.appendChild(child); }
+                }
+            });
+            fetch('footer.html').then(r => r.text()).then(d => document.getElementById('footer-placeholder').innerHTML = d);
+
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+            
+            // Scroll Spy
+            const sections = document.querySelectorAll('#section-story, #section-experience, #section-education, #section-skills, #section-volunteer');
+            const navLinks = document.querySelectorAll('.page-nav a');
+            const spyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        const id = '#' + entry.target.id;
+                        const active = document.querySelector(`.page-nav a[href="${id}"]`);
+                        if (active) active.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+            sections.forEach(s => spyObserver.observe(s));
+            
+            document.querySelectorAll('.page-nav a').forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        const offset = 160;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

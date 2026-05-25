@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Certifications | Marwan Magdy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050507;--surf:rgba(255,255,255,.025);--bdr:rgba(255,255,255,.08);--bdr2:rgba(255,255,255,.14);--text:#f1f5f9;--sub:#94a3b8;--muted:#64748b;--green:#10b981;--blue:#3b82f6;--purple:#8b5cf6;--H:'Playfair Display',serif;--B:'Outfit',sans-serif;--ease:cubic-bezier(.16,1,.3,1)}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:var(--B);overflow-x:hidden}a{text-decoration:none;color:inherit}
+.amb{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.amb::before{content:'';position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.1) 0%,transparent 70%);top:-200px;right:-100px;animation:drift 22s ease-in-out infinite alternate}
+.amb::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.07) 0%,transparent 70%);bottom:-100px;left:-50px;animation:drift 18s ease-in-out infinite alternate-reverse}
+@keyframes drift{0%{transform:translate(0,0)}100%{transform:translate(30px,40px)}}
+.wrap{max-width:1280px;margin:0 auto;padding:0 5%;position:relative;z-index:1}
+.hero{padding:9rem 0 4rem;text-align:center;border-bottom:1px solid var(--bdr)}
+.kicker{display:inline-flex;align-items:center;gap:.5rem;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);color:var(--green);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:.4rem 1rem;border-radius:50px;margin-bottom:1.5rem}
+.kicker-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:var(--H);font-size:clamp(2.8rem,6vw,5rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:1rem}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--green),var(--blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--sub);font-size:1.05rem;max-width:500px;margin:0 auto}
+.stats{display:flex;justify-content:center;gap:4rem;flex-wrap:wrap;padding:2.5rem 0;border-bottom:1px solid var(--bdr)}
+.stat-n{font-size:2rem;font-weight:900;line-height:1}.stat-l{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:.3rem;text-align:center}
+.filters{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;padding:2rem 0}
+.fb{padding:.5rem 1.25rem;border-radius:50px;border:1px solid var(--bdr2);color:var(--sub);font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;background:transparent;cursor:pointer;transition:all .25s var(--ease);font-family:var(--B)}
+.fb:hover{border-color:rgba(255,255,255,.25);color:var(--text)}
+.fb.on-all{background:var(--green);color:#000;border-color:var(--green);box-shadow:0 4px 20px rgba(16,185,129,.3)}
+.fb.on-business{background:var(--green);color:#000;border-color:var(--green)}
+.fb.on-tech{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 4px 20px rgba(59,130,246,.3)}
+.fb.on-hackathon{background:var(--purple);color:#fff;border-color:var(--purple);box-shadow:0 4px 20px rgba(139,92,246,.3)}
+.search-row{max-width:480px;margin:0 auto 1.5rem;position:relative}
+.search-row input{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--bdr2);color:var(--text);font-family:var(--B);font-size:.92rem;padding:.85rem 1.2rem .85rem 2.8rem;border-radius:50px;outline:none;transition:border-color .3s}
+.search-row input:focus{border-color:rgba(16,185,129,.4)}.search-row input::placeholder{color:var(--muted)}
+.search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--muted)}
+.count-label{text-align:center;font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;padding-bottom:6rem}
+.cert-card{background:var(--surf);border:1px solid var(--bdr);border-radius:1.1rem;overflow:hidden;cursor:pointer;transition:transform .35s var(--ease),border-color .3s,box-shadow .3s;display:flex;flex-direction:column}
+.cert-card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.16);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.cert-img{height:160px;position:relative;overflow:hidden;background:#0a0a12;flex-shrink:0}
+.cert-card:hover .cert-img img{transform:scale(1.06)}
+.badge{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:.28rem .7rem;border-radius:50px;border:1px solid;white-space:nowrap;display:inline-block}
+.cert-body{padding:1.1rem 1.25rem .8rem;flex:1}
+.cert-title{font-family:var(--H);font-size:1rem;line-height:1.3;margin-bottom:.5rem;color:var(--text)}
+.cert-card:hover .cert-title{color:var(--green)}
+.cert-meta{display:flex;justify-content:space-between;margin-bottom:.6rem}
+.cert-iss{font-size:.8rem;color:var(--sub);font-weight:500}.cert-dt{font-size:.75rem;color:var(--muted)}
+.cert-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.tag{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--sub);font-size:.65rem;padding:.2rem .55rem;border-radius:5px;line-height:1.4}
+.cert-foot{padding:.75rem 1.25rem;border-top:1px solid rgba(255,255,255,.05)}
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(14px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-ov.open{opacity:1;pointer-events:all}
+.modal{background:#0c0c12;border:1px solid var(--bdr2);border-radius:1.4rem;max-width:720px;width:100%;max-height:90vh;overflow-y:auto;transform:translateY(24px) scale(.97);transition:transform .4s var(--ease);position:relative}
+.modal-ov.open .modal{transform:none}
+.mpdf{width:100%;height:320px;background:#111;border-bottom:1px solid var(--bdr);overflow:hidden}
+.mpdf iframe{width:100%;height:100%;border:none}
+.mpdf img{width:100%;height:100%;object-fit:contain;background:#fff}
+.mbody{padding:1.75rem}
+.mcat{display:inline-flex;align-items:center;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:.3rem .85rem;border-radius:50px;border:1px solid;margin-bottom:1rem}
+.mtitle{font-family:var(--H);font-size:clamp(1.4rem,3vw,2rem);margin-bottom:.5rem;line-height:1.2}
+.mmeta{display:flex;gap:1.5rem;color:var(--sub);font-size:.88rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.msec{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:.7rem}
+.mlist{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.75rem}
+.mlist li{display:flex;gap:.65rem;color:#cbd5e1;font-size:.92rem;line-height:1.5}
+.mlist li::before{content:"→";color:var(--green);flex-shrink:0;font-weight:700}
+.mclose{position:absolute;top:.9rem;right:.9rem;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid var(--bdr2);color:var(--sub);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;z-index:10}
+.mclose:hover{background:rgba(255,255,255,.12);color:var(--text)}
+.mbtn-close{background:rgba(255,255,255,.06);border:1px solid var(--bdr2);color:var(--sub);font-size:.88rem;padding:.7rem 1.5rem;border-radius:50px;cursor:pointer;font-family:var(--B);transition:all .3s}
+.mbtn-close:hover{background:rgba(255,255,255,.1);color:var(--text)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.reveal.active{opacity:1;transform:none}
+@media(max-width:1024px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.stats{gap:2rem}}
+</style>
+</head>
+<body>
+<div class="amb"></div>
+<div id="nav-ph"></div>
+<main class="wrap">
+  <header class="hero reveal">
+    <div class="kicker"><span class="kicker-dot"></span>Verified Learning</div>
+    <h1>30+ Certifications &amp;<br><em>Counting</em></h1>
+    <p>Every course, program, and competition credential — all in one place.</p>
+  </header>
+  <div class="stats reveal">
+    <div><div class="stat-n">12</div><div class="stat-l">Business &amp; Entrepreneurship</div></div>
+    <div><div class="stat-n">6</div><div class="stat-l">Software &amp; Technology</div></div>
+    <div><div class="stat-n">9</div><div class="stat-l">Hackathons &amp; Events</div></div>
+    <div><div class="stat-n">27+</div><div class="stat-l">Total Credentials</div></div>
+  </div>
+  <div class="filters reveal">
+    <button class="fb on-all" onclick="filt('all',this)">✦ All (27)</button>
+    <button class="fb" onclick="filt('business',this)">💼 Business (12)</button>
+    <button class="fb" onclick="filt('tech',this)">💻 Technology (6)</button>
+    <button class="fb" onclick="filt('hackathon',this)">🏆 Hackathons (9)</button>
+  </div>
+  <div class="search-row"><span class="search-icon">🔍</span><input type="text" placeholder="Search certifications..." oninput="search(this.value)"></div>
+  <div class="count-label" id="cnt">Showing all 27 certifications</div>
+  <div class="grid" id="grid"><div class="cert-card reveal" data-cat="business" onclick="openD(0)">
+      <div class="cert-img"><img src="assets/certifications/Founder Academy Deep Dive C4 ALX Ventures.png" alt="Founder Academy Deep Dive" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,5,7,.85));"></div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Founder Academy Deep Dive</h3>
+        <div class="cert-meta"><span class="cert-iss">ALX Ventures</span><span class="cert-dt">Oct 2024</span></div>
+        <div class="cert-tags"><span class="tag">Lean startup methodology and rapid MVP validation</span><span class="tag">Investor relations and pitch structuring</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="business" onclick="openD(1)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(16,185,129,.03));font-size:2.5rem;">💼</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">McKinsey Forward Program</h3>
+        <div class="cert-meta"><span class="cert-iss">McKinsey & Company</span><span class="cert-dt">Sep 2024</span></div>
+        <div class="cert-tags"><span class="tag">McKinsey problem-solving frameworks and structured thinking</span><span class="tag">Leadership under pressure and cross-functional management</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="business" onclick="openD(2)">
+      <div class="cert-img"><img src="assets/certifications/Mini MBA in Entrepreneurship-almentor.jpg" alt="Mini MBA in Entrepreneurship" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,5,7,.85));"></div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Mini MBA in Entrepreneurship</h3>
+        <div class="cert-meta"><span class="cert-iss">Almentor</span><span class="cert-dt">2023</span></div>
+        <div class="cert-tags"><span class="tag">Business model design from idea to scale</span><span class="tag">Financial forecasting and startup unit economics</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="business" onclick="openD(3)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(16,185,129,.03));font-size:2.5rem;">💼</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Business & Start Up Booster</h3>
+        <div class="cert-meta"><span class="cert-iss">Forward Inc</span><span class="cert-dt">Oct 2023</span></div>
+        <div class="cert-tags"><span class="tag">Startup ecosystem fundamentals and venture lifecycle</span><span class="tag">Building and scaling early-stage teams</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="business" onclick="openD(4)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(16,185,129,.03));font-size:2.5rem;">💼</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Balanced Business Model</h3>
+        <div class="cert-meta"><span class="cert-iss">Eyouth</span><span class="cert-dt">Aug 2023</span></div>
+        <div class="cert-tags"><span class="tag">Lean Canvas and Business Model Canvas frameworks</span><span class="tag">Customer segment identification and value proposition</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="business" onclick="openD(5)">
+      <div class="cert-img"><img src="assets/certifications/Create Strategy for Small and Medium Enterprises-almentor.jpg" alt="Strategy for SMEs" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,5,7,.85));"></div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Strategy for SMEs</h3>
+        <div class="cert-meta"><span class="cert-iss">Almentor</span><span class="cert-dt">Jan 2024</span></div>
+        <div class="cert-tags"><span class="tag">Porter's Five Forces and SWOT analysis</span><span class="tag">Growth strategies for small and medium enterprises</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="business" onclick="openD(6)">
+      <div class="cert-img"><img src="assets/certifications/Entrepreneurship 2.0_ Build Your Business Model Canvas-almentor.jpg" alt="Entrepreneurship 2.0: Business Model Canvas" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,5,7,.85));"></div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Entrepreneurship 2.0: Business Model Canvas</h3>
+        <div class="cert-meta"><span class="cert-iss">Almentor</span><span class="cert-dt">2023</span></div>
+        <div class="cert-tags"><span class="tag">Business Model Canvas: 9-block deep-dive</span><span class="tag">Customer discovery and problem-solution fit</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="business" onclick="openD(7)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(16,185,129,.03));font-size:2.5rem;">💼</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Entrepreneurship Ecosystem</h3>
+        <div class="cert-meta"><span class="cert-iss">Eyouth</span><span class="cert-dt">Nov 2023</span></div>
+        <div class="cert-tags"><span class="tag">Startup ecosystem: investors, accelerators, incubators</span><span class="tag">Funding stages: bootstrapping, angel, seed, Series A</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="business" onclick="openD(8)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(16,185,129,.03));font-size:2.5rem;">💼</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Innov Egypt Entrepreneurship Program</h3>
+        <div class="cert-meta"><span class="cert-iss">TIEC</span><span class="cert-dt">2023</span></div>
+        <div class="cert-tags"><span class="tag">Egyptian innovation ecosystem and TIEC's role</span><span class="tag">Technology entrepreneurship and digital transformation</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="business" onclick="openD(9)">
+      <div class="cert-img"><img src="assets/certifications/Pitching Your Business Idea-almentor.jpg" alt="Pitching Your Business Idea" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,5,7,.85));"></div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Pitching Your Business Idea</h3>
+        <div class="cert-meta"><span class="cert-iss">Almentor</span><span class="cert-dt">2023</span></div>
+        <div class="cert-tags"><span class="tag">Pitch deck structure: problem, solution, traction, ask</span><span class="tag">Storytelling techniques for investor presentations</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="business" onclick="openD(10)">
+      <div class="cert-img"><img src="assets/certifications/Project Management Crash Course ALX.png" alt="Project Management Crash Course" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,5,7,.85));"></div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Project Management Crash Course</h3>
+        <div class="cert-meta"><span class="cert-iss">ALX</span><span class="cert-dt">2024</span></div>
+        <div class="cert-tags"><span class="tag">Agile and Scrum project management fundamentals</span><span class="tag">Kanban and sprint planning for task prioritization</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="business" onclick="openD(11)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(16,185,129,.03));font-size:2.5rem;">💼</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1);backdrop-filter:blur(8px);">💼 Business & Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Business English Track</h3>
+        <div class="cert-meta"><span class="cert-iss">DEPI / OTO Courses</span><span class="cert-dt">2024</span></div>
+        <div class="cert-tags"><span class="tag">Business English: writing, speaking, presentations</span><span class="tag">Professional email and report writing standards</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#10b981;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="tech" onclick="openD(12)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(59,130,246,.03));font-size:2.5rem;">💻</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#3b82f6;border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.1);backdrop-filter:blur(8px);">💻 Software & Technology</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Software Tester</h3>
+        <div class="cert-meta"><span class="cert-iss">DEPI / AMIT</span><span class="cert-dt">2024</span></div>
+        <div class="cert-tags"><span class="tag">Software testing lifecycle: unit, integration, system, UAT</span><span class="tag">Manual and automated testing techniques</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#3b82f6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="tech" onclick="openD(13)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(59,130,246,.03));font-size:2.5rem;">💻</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#3b82f6;border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.1);backdrop-filter:blur(8px);">💻 Software & Technology</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">DEPI Round 2 Graduation</h3>
+        <div class="cert-meta"><span class="cert-iss">AMIT</span><span class="cert-dt">Apr 2024</span></div>
+        <div class="cert-tags"><span class="tag">Graduation from DEPI Round 2 government digital skills progr</span><span class="tag">Advanced software development professional practices</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#3b82f6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="tech" onclick="openD(14)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(59,130,246,.03));font-size:2.5rem;">💻</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#3b82f6;border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.1);backdrop-filter:blur(8px);">💻 Software & Technology</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">AI Introduction & Applications</h3>
+        <div class="cert-meta"><span class="cert-iss">Zewail City</span><span class="cert-dt">2023</span></div>
+        <div class="cert-tags"><span class="tag">Introduction to AI and machine learning fundamentals</span><span class="tag">AI applications in healthcare, finance, and logistics</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#3b82f6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="tech" onclick="openD(15)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(59,130,246,.03));font-size:2.5rem;">💻</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#3b82f6;border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.1);backdrop-filter:blur(8px);">💻 Software & Technology</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Intro to AI and Applications</h3>
+        <div class="cert-meta"><span class="cert-iss">Impact</span><span class="cert-dt">2023</span></div>
+        <div class="cert-tags"><span class="tag">AI fundamentals: supervised, unsupervised, reinforcement lea</span><span class="tag">Real-world AI use cases and ethical considerations</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#3b82f6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="tech" onclick="openD(16)">
+      <div class="cert-img"><img src="assets/certifications/10. ITIDA Gigs Certifications.jpg" alt="ITIDA Gigs Certification" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,5,7,.85));"></div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#3b82f6;border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.1);backdrop-filter:blur(8px);">💻 Software & Technology</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">ITIDA Gigs Certification</h3>
+        <div class="cert-meta"><span class="cert-iss">ITIDA</span><span class="cert-dt">2024</span></div>
+        <div class="cert-tags"><span class="tag">Freelancing and digital gig economy certification</span><span class="tag">Egyptian digital economy initiative for tech professionals</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#3b82f6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="tech" onclick="openD(17)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(59,130,246,.03));font-size:2.5rem;">💻</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#3b82f6;border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.1);backdrop-filter:blur(8px);">💻 Software & Technology</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Digital Marketing Challenger</h3>
+        <div class="cert-meta"><span class="cert-iss">Udacity</span><span class="cert-dt">2023</span></div>
+        <div class="cert-tags"><span class="tag">Digital marketing: SEO, SEM, social media</span><span class="tag">Content marketing and audience targeting strategies</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#3b82f6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="hackathon" onclick="openD(18)">
+      <div class="cert-img"><img src="assets/certifications/Huawei Developer Competition 2025 Northern Africa Huawei.png" alt="Huawei Developer Competition 2025" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,5,7,.85));"></div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#8b5cf6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.1);backdrop-filter:blur(8px);">🏆 Hackathons & Events</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Huawei Developer Competition 2025</h3>
+        <div class="cert-meta"><span class="cert-iss">Huawei Northern Africa</span><span class="cert-dt">Dec 2025</span></div>
+        <div class="cert-tags"><span class="tag">2nd Place — Huawei Developer Competition 2025 Northern Afric</span><span class="tag">389 teams, 10+ countries, 1,400+ participants</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#8b5cf6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="hackathon" onclick="openD(19)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(139,92,246,.03));font-size:2.5rem;">🏆</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#8b5cf6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.1);backdrop-filter:blur(8px);">🏆 Hackathons & Events</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">NASA Space Apps Challenge 2024</h3>
+        <div class="cert-meta"><span class="cert-iss">NASA Space Apps</span><span class="cert-dt">Oct 2024</span></div>
+        <div class="cert-tags"><span class="tag">Global Nominee — NASA Space Apps Challenge 2024</span><span class="tag">Built Green Pulse: climate-tech addressing Kiribati sea-leve</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#8b5cf6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="hackathon" onclick="openD(20)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(139,92,246,.03));font-size:2.5rem;">🏆</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#8b5cf6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.1);backdrop-filter:blur(8px);">🏆 Hackathons & Events</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">NASA Space Apps Cairo 2024</h3>
+        <div class="cert-meta"><span class="cert-iss">NASA Space Apps Cairo</span><span class="cert-dt">Oct 2024</span></div>
+        <div class="cert-tags"><span class="tag">Local Winner — NASA Space Apps Cairo 2024</span><span class="tag">Team Green Pulse: storytelling-driven climate science</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#8b5cf6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="hackathon" onclick="openD(21)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(139,92,246,.03));font-size:2.5rem;">🏆</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#8b5cf6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.1);backdrop-filter:blur(8px);">🏆 Hackathons & Events</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">NASA Space Apps Cairo Bootcamp 2025</h3>
+        <div class="cert-meta"><span class="cert-iss">NASA Space Apps Cairo</span><span class="cert-dt">2025</span></div>
+        <div class="cert-tags"><span class="tag">NASA Space Apps Cairo Bootcamp: ideation to prototype</span><span class="tag">Collaboration with space professionals and NASA mentors</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#8b5cf6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="hackathon" onclick="openD(22)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(139,92,246,.03));font-size:2.5rem;">🏆</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#8b5cf6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.1);backdrop-filter:blur(8px);">🏆 Hackathons & Events</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">AI for Life Hackathon</h3>
+        <div class="cert-meta"><span class="cert-iss">Cairo ICT</span><span class="cert-dt">Nov 2025</span></div>
+        <div class="cert-tags"><span class="tag">2nd Place — AI for Life Human-Centered Hackathon, Cairo ICT </span><span class="tag">Designed empathy-first AI for real-world social impact</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#8b5cf6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="hackathon" onclick="openD(23)">
+      <div class="cert-img"><img src="assets/certifications/E-Gnite Bootcamp and Competition Nile University.png" alt="E-Gnite Bootcamp and Competition" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,5,7,.85));"></div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#8b5cf6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.1);backdrop-filter:blur(8px);">🏆 Hackathons & Events</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">E-Gnite Bootcamp and Competition</h3>
+        <div class="cert-meta"><span class="cert-iss">Nile University</span><span class="cert-dt">2024</span></div>
+        <div class="cert-tags"><span class="tag">E-Gnite: entrepreneurship and innovation at Nile University</span><span class="tag">Ideation workshops, prototyping, and competitive pitching</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#8b5cf6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="hackathon" onclick="openD(24)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(139,92,246,.03));font-size:2.5rem;">🏆</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#8b5cf6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.1);backdrop-filter:blur(8px);">🏆 Hackathons & Events</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">ESG Contest 2nd Place</h3>
+        <div class="cert-meta"><span class="cert-iss">Crédit Agricole Egypt</span><span class="cert-dt">2023</span></div>
+        <div class="cert-tags"><span class="tag">2nd Place — Crédit Agricole Egypt Green ESG Contest 2023</span><span class="tag">Built Unbounded: accessibility-first app for job seekers wit</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#8b5cf6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="hackathon" onclick="openD(25)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(139,92,246,.03));font-size:2.5rem;">🏆</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#8b5cf6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.1);backdrop-filter:blur(8px);">🏆 Hackathons & Events</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Flat6Labs Accelerator</h3>
+        <div class="cert-meta"><span class="cert-iss">Flat6Labs</span><span class="cert-dt">Dec 2026</span></div>
+        <div class="cert-tags"><span class="tag">Selected into Flat6Labs Accelerator Program — Dec 2026</span><span class="tag">Riadi: sports-tech platform for the Arab world</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#8b5cf6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div>
+<div class="cert-card reveal" data-cat="hackathon" onclick="openD(26)">
+      <div class="cert-img"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(139,92,246,.03));font-size:2.5rem;">🏆</div>
+        <div style="position:absolute;top:.75rem;left:.75rem;">
+          <span class="badge" style="color:#8b5cf6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.1);backdrop-filter:blur(8px);">🏆 Hackathons & Events</span>
+        </div>
+      </div>
+      <div class="cert-body">
+        <h3 class="cert-title">Arab Youth Summit</h3>
+        <div class="cert-meta"><span class="cert-iss">Arab Sustainable Development Week Union</span><span class="cert-dt">2023</span></div>
+        <div class="cert-tags"><span class="tag">Arab Youth Summit — Arab Sustainable Development Week Union</span><span class="tag">Regional youth leadership and sustainable development goals</span></div>
+      </div>
+      <div class="cert-foot"><span style="color:#8b5cf6;font-size:.82rem;font-weight:600;">View Details →</span></div>
+    </div></div>
+</main>
+<div class="modal-ov" id="ov" onclick="if(event.target===this)close()">
+  <div class="modal">
+    <button class="mclose" onclick="close()">✕</button>
+    <div class="mpdf" id="mpdf"></div>
+    <div class="mbody">
+      <div class="mcat" id="mcat"></div>
+      <h2 class="mtitle" id="mtitle"></h2>
+      <div class="mmeta" id="mmeta"></div>
+      <div class="msec">Key Learnings</div>
+      <ul class="mlist" id="mlist"></ul>
+      <button class="mbtn-close" onclick="close()">Close</button>
+    </div>
+  </div>
+</div>
+<div id="foot-ph"></div>
+<script>
+const CERTS=[{"cat": "business", "title": "Founder Academy Deep Dive", "issuer": "ALX Ventures", "date": "Oct 2024", "pdf": "assets/certifications/Founder Academy Deep Dive C4 ALX Ventures.png", "thumb": "assets/certifications/Founder Academy Deep Dive C4 ALX Ventures.png", "learnings": ["Lean startup methodology and rapid MVP validation", "Investor relations and pitch structuring", "ALX Ventures ecosystem: mentorship and growth resources"]}, {"cat": "business", "title": "McKinsey Forward Program", "issuer": "McKinsey & Company", "date": "Sep 2024", "pdf": "assets/certifications/McKinsey_Forward_Program_Badge.pdf", "thumb": "assets/certifications/McKinsey_Forward_Program_Badge.pdf", "learnings": ["McKinsey problem-solving frameworks and structured thinking", "Leadership under pressure and cross-functional management", "Data-driven decision making and communication"]}, {"cat": "business", "title": "Mini MBA in Entrepreneurship", "issuer": "Almentor", "date": "2023", "pdf": "assets/certifications/Mini MBA in Entrepreneurship-almentor.jpg", "thumb": "assets/certifications/Mini MBA in Entrepreneurship-almentor.jpg", "learnings": ["Business model design from idea to scale", "Financial forecasting and startup unit economics", "Market analysis and competitive positioning"]}, {"cat": "business", "title": "Business & Start Up Booster", "issuer": "Forward Inc", "date": "Oct 2023", "pdf": "assets/certifications/Business and Start Up Booster Forward Inc.pdf", "thumb": "assets/certifications/Business and Start Up Booster Forward Inc.pdf", "learnings": ["Startup ecosystem fundamentals and venture lifecycle", "Building and scaling early-stage teams", "Go-to-market execution for B2B and B2C startups"]}, {"cat": "business", "title": "Balanced Business Model", "issuer": "Eyouth", "date": "Aug 2023", "pdf": "assets/certifications/Balanced Business Model Eyouth.pdf", "thumb": "assets/certifications/Balanced Business Model Eyouth.pdf", "learnings": ["Lean Canvas and Business Model Canvas frameworks", "Customer segment identification and value proposition", "Revenue stream optimization for sustainable growth"]}, {"cat": "business", "title": "Strategy for SMEs", "issuer": "Almentor", "date": "Jan 2024", "pdf": "assets/certifications/Create Strategy for Small and Medium Enterprises-almentor.jpg", "thumb": "assets/certifications/Create Strategy for Small and Medium Enterprises-almentor.jpg", "learnings": ["Porter's Five Forces and SWOT analysis", "Growth strategies for small and medium enterprises", "Strategic planning and KPI design"]}, {"cat": "business", "title": "Entrepreneurship 2.0: Business Model Canvas", "issuer": "Almentor", "date": "2023", "pdf": "assets/certifications/Entrepreneurship 2.0_ Build Your Business Model Canvas-almentor.jpg", "thumb": "assets/certifications/Entrepreneurship 2.0_ Build Your Business Model Canvas-almentor.jpg", "learnings": ["Business Model Canvas: 9-block deep-dive", "Customer discovery and problem-solution fit", "Pivoting strategies and iterative product development"]}, {"cat": "business", "title": "Entrepreneurship Ecosystem", "issuer": "Eyouth", "date": "Nov 2023", "pdf": "assets/certifications/Entrepreneurship Ecosystem Eyouth.pdf", "thumb": "assets/certifications/Entrepreneurship Ecosystem Eyouth.pdf", "learnings": ["Startup ecosystem: investors, accelerators, incubators", "Funding stages: bootstrapping, angel, seed, Series A", "Egypt's startup ecosystem and support programs"]}, {"cat": "business", "title": "Innov Egypt Entrepreneurship Program", "issuer": "TIEC", "date": "2023", "pdf": "assets/certifications/Innov Egypt Entrepreneurship Program TIEC.pdf", "thumb": "assets/certifications/Innov Egypt Entrepreneurship Program TIEC.pdf", "learnings": ["Egyptian innovation ecosystem and TIEC's role", "Technology entrepreneurship and digital transformation", "Mentorship and networking within Egypt's ecosystem"]}, {"cat": "business", "title": "Pitching Your Business Idea", "issuer": "Almentor", "date": "2023", "pdf": "assets/certifications/Pitching Your Business Idea-almentor.jpg", "thumb": "assets/certifications/Pitching Your Business Idea-almentor.jpg", "learnings": ["Pitch deck structure: problem, solution, traction, ask", "Storytelling techniques for investor presentations", "Handling investor objections and Q&A preparation"]}, {"cat": "business", "title": "Project Management Crash Course", "issuer": "ALX", "date": "2024", "pdf": "assets/certifications/Project Management Crash Course ALX.png", "thumb": "assets/certifications/Project Management Crash Course ALX.png", "learnings": ["Agile and Scrum project management fundamentals", "Kanban and sprint planning for task prioritization", "Risk management and stakeholder communication"]}, {"cat": "business", "title": "Business English Track", "issuer": "DEPI / OTO Courses", "date": "2024", "pdf": "assets/certifications/Business English Track DEPI OTO Courses.pdf", "thumb": "assets/certifications/Business English Track DEPI OTO Courses.pdf", "learnings": ["Business English: writing, speaking, presentations", "Professional email and report writing standards", "Cross-cultural business communication skills"]}, {"cat": "tech", "title": "Software Tester", "issuer": "DEPI / AMIT", "date": "2024", "pdf": "assets/certifications/Software Tester DEPI AMIT.pdf", "thumb": "assets/certifications/Software Tester DEPI AMIT.pdf", "learnings": ["Software testing lifecycle: unit, integration, system, UAT", "Manual and automated testing techniques", "Bug tracking, test case design, and QA reporting"]}, {"cat": "tech", "title": "DEPI Round 2 Graduation", "issuer": "AMIT", "date": "Apr 2024", "pdf": "assets/certifications/DEPI Round 2 Graduation Ceremony AMIT.pdf", "thumb": "assets/certifications/DEPI Round 2 Graduation Ceremony AMIT.pdf", "learnings": ["Graduation from DEPI Round 2 government digital skills program", "Advanced software development professional practices", "Digital Egypt Pioneers Initiative certification"]}, {"cat": "tech", "title": "AI Introduction & Applications", "issuer": "Zewail City", "date": "2023", "pdf": "assets/certifications/AI Zewail City.pdf", "thumb": "assets/certifications/AI Zewail City.pdf", "learnings": ["Introduction to AI and machine learning fundamentals", "AI applications in healthcare, finance, and logistics", "Neural networks and deep learning basics"]}, {"cat": "tech", "title": "Intro to AI and Applications", "issuer": "Impact", "date": "2023", "pdf": "assets/certifications/Intro to AI and Applications Impact.pdf", "thumb": "assets/certifications/Intro to AI and Applications Impact.pdf", "learnings": ["AI fundamentals: supervised, unsupervised, reinforcement learning", "Real-world AI use cases and ethical considerations", "Hands-on AI tools and frameworks introduction"]}, {"cat": "tech", "title": "ITIDA Gigs Certification", "issuer": "ITIDA", "date": "2024", "pdf": "assets/certifications/10. ITIDA Gigs Certifications.jpg", "thumb": "assets/certifications/10. ITIDA Gigs Certifications.jpg", "learnings": ["Freelancing and digital gig economy certification", "Egyptian digital economy initiative for tech professionals", "International freelancing platforms and project management"]}, {"cat": "tech", "title": "Digital Marketing Challenger", "issuer": "Udacity", "date": "2023", "pdf": "assets/certifications/Digital Marketing Challenger Udacity.pdf", "thumb": "assets/certifications/Digital Marketing Challenger Udacity.pdf", "learnings": ["Digital marketing: SEO, SEM, social media", "Content marketing and audience targeting strategies", "Analytics and conversion optimization basics"]}, {"cat": "hackathon", "title": "Huawei Developer Competition 2025", "issuer": "Huawei Northern Africa", "date": "Dec 2025", "pdf": "assets/certifications/Huawei Developer Competition 2025 Northern Africa Huawei.png", "thumb": "assets/certifications/Huawei Developer Competition 2025 Northern Africa Huawei.png", "learnings": ["2nd Place — Huawei Developer Competition 2025 Northern Africa", "389 teams, 10+ countries, 1,400+ participants", "AI architecture integration with Huawei Cloud services"]}, {"cat": "hackathon", "title": "NASA Space Apps Challenge 2024", "issuer": "NASA Space Apps", "date": "Oct 2024", "pdf": "assets/certifications/NASA Space Apps Challenge 2024.pdf", "thumb": "assets/certifications/NASA Space Apps Challenge 2024.pdf", "learnings": ["Global Nominee — NASA Space Apps Challenge 2024", "Built Green Pulse: climate-tech addressing Kiribati sea-level crisis", "NASA open data integration and space technology application"]}, {"cat": "hackathon", "title": "NASA Space Apps Cairo 2024", "issuer": "NASA Space Apps Cairo", "date": "Oct 2024", "pdf": "assets/certifications/NASA Space Apps Cairo Hackathon 2024.pdf", "thumb": "assets/certifications/NASA Space Apps Cairo Hackathon 2024.pdf", "learnings": ["Local Winner — NASA Space Apps Cairo 2024", "Team Green Pulse: storytelling-driven climate science", "Translated complex NASA data into human-centered narratives"]}, {"cat": "hackathon", "title": "NASA Space Apps Cairo Bootcamp 2025", "issuer": "NASA Space Apps Cairo", "date": "2025", "pdf": "assets/certifications/NASA Space Apps Cairo Bootcamp 2025 NASA Space Apps Cairo.pdf", "thumb": "assets/certifications/NASA Space Apps Cairo Bootcamp 2025 NASA Space Apps Cairo.pdf", "learnings": ["NASA Space Apps Cairo Bootcamp: ideation to prototype", "Collaboration with space professionals and NASA mentors", "Rapid prototyping and pitching for space challenges"]}, {"cat": "hackathon", "title": "AI for Life Hackathon", "issuer": "Cairo ICT", "date": "Nov 2025", "pdf": "assets/certifications/AI for Life Hackathon Cairo ICT.pdf", "thumb": "assets/certifications/AI for Life Hackathon Cairo ICT.pdf", "learnings": ["2nd Place — AI for Life Human-Centered Hackathon, Cairo ICT 2025", "Designed empathy-first AI for real-world social impact", "Blending human-centered design with advanced AI technology"]}, {"cat": "hackathon", "title": "E-Gnite Bootcamp and Competition", "issuer": "Nile University", "date": "2024", "pdf": "assets/certifications/E-Gnite Bootcamp and Competition Nile University.png", "thumb": "assets/certifications/E-Gnite Bootcamp and Competition Nile University.png", "learnings": ["E-Gnite: entrepreneurship and innovation at Nile University", "Ideation workshops, prototyping, and competitive pitching", "Startup competition experience in Egyptian university ecosystem"]}, {"cat": "hackathon", "title": "ESG Contest 2nd Place", "issuer": "Crédit Agricole Egypt", "date": "2023", "pdf": "assets/certifications/ESG Contest Credit Agricole Bank.pdf", "thumb": "assets/certifications/ESG Contest Credit Agricole Bank.pdf", "learnings": ["2nd Place — Crédit Agricole Egypt Green ESG Contest 2023", "Built Unbounded: accessibility-first app for job seekers with disabilities", "ESG principles applied to product design and social impact"]}, {"cat": "hackathon", "title": "Flat6Labs Accelerator", "issuer": "Flat6Labs", "date": "Dec 2026", "pdf": "assets/certifications/Flat6Labs.pdf", "thumb": "assets/certifications/Flat6Labs.pdf", "learnings": ["Selected into Flat6Labs Accelerator Program — Dec 2026", "Riadi: sports-tech platform for the Arab world", "Flat6Labs: investor access, mentorship, and market validation"]}, {"cat": "hackathon", "title": "Arab Youth Summit", "issuer": "Arab Sustainable Development Week Union", "date": "2023", "pdf": "assets/certifications/Arab Youth Summit Arab Sustainable Development Week Union.pdf", "thumb": "assets/certifications/Arab Youth Summit Arab Sustainable Development Week Union.pdf", "learnings": ["Arab Youth Summit — Arab Sustainable Development Week Union", "Regional youth leadership and sustainable development goals", "Networking with Arab youth leaders and policy makers"]}];
+const ACC={'business':'#10b981','tech':'#3b82f6','hackathon':'#8b5cf6'};
+const RG={'business':'rgba(16,185,129,','tech':'rgba(59,130,246,','hackathon':'rgba(139,92,246,'};
+const LBL={'business':'💼 Business & Entrepreneurship','tech':'💻 Software & Technology','hackathon':'🏆 Hackathons & Events'};
+const isImg=s=>s&&/\.(jpg|jpeg|png)$/i.test(s);
+function openD(i){
+  const c=CERTS[i],col=ACC[c.cat],rg=RG[c.cat];
+  const el=document.getElementById('mpdf');
+  if(isImg(c.thumb))el.innerHTML=`<img src="${c.thumb}" alt="${c.title}">`;
+  else if(c.pdf&&c.pdf.endsWith('.pdf'))el.innerHTML=`<iframe src="${c.pdf}" sandbox="allow-scripts allow-same-origin"></iframe>`;
+  else el.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#64748b;">No preview</div>';
+  const mc=document.getElementById('mcat');
+  mc.textContent=LBL[c.cat];mc.style.color=col;mc.style.borderColor=rg+'0.3)';mc.style.background=rg+'0.08)';
+  document.getElementById('mtitle').textContent=c.title;
+  document.getElementById('mmeta').innerHTML=`<span>${c.issuer}</span><span>·</span><span>${c.date}</span>`;
+  document.getElementById('mlist').innerHTML=c.learnings.map(l=>`<li>${l}</li>`).join('');
+  document.getElementById('ov').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function close(){document.getElementById('ov').classList.remove('open');document.body.style.overflow='';document.getElementById('mpdf').innerHTML='';}
+let curCat='all';
+function filt(cat,btn){curCat=cat;document.querySelectorAll('.fb').forEach(b=>b.className='fb');btn.className='fb on-'+cat;applyF();}
+function search(q){applyF();}
+function applyF(){
+  const q=document.querySelector('.search-row input').value.toLowerCase();
+  const cards=[...document.querySelectorAll('#grid .cert-card')];
+  let v=0;
+  cards.forEach(c=>{
+    const ok=(curCat==='all'||c.dataset.cat===curCat)&&(!q||c.querySelector('.cert-title').textContent.toLowerCase().includes(q)||c.querySelector('.cert-iss').textContent.toLowerCase().includes(q));
+    c.style.display=ok?'flex':'none';if(ok)v++;
+  });
+  document.getElementById('cnt').textContent='Showing '+v+' certification'+(v!==1?'s':'');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  fetch('nav.html').then(r=>r.text()).then(d=>{const t=document.createElement('div');t.innerHTML=d;const ph=document.getElementById('nav-ph');while(t.firstChild){const c=t.firstChild;if(c.tagName==='SCRIPT'){const s=document.createElement('script');s.textContent=c.textContent;document.body.appendChild(s);t.removeChild(c);}else ph.appendChild(c);}});
+  fetch('footer.html').then(r=>r.text()).then(d=>document.getElementById('foot-ph').innerHTML=d);
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active');});},{threshold:.07});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+});
+</script>
+</body></html>

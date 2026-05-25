@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwan Magdy | Founder & CEO, Riadi</title>
+    <meta name="description" content="Technical founder and startup executive. Founder & CEO of Riadi. Multiple hackathon winner. Backed by Flat6Labs.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #030305;
+            --color-surface: rgba(15, 15, 20, 0.6);
+            --color-text-primary: #f8fafc;
+            --color-text-secondary: #94a3b8;
+            --color-border: rgba(255, 255, 255, 0.12);
+            --color-brand-green: #10b981;
+            --color-brand-blue: #3b82f6;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Outfit', sans-serif;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--color-bg); color: var(--color-text-primary); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        img { display: block; max-width: 100%; }
+
+        /* ── BG GLOW ── */
+        .bg-glow { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
+        .bg-glow::before { content: ''; position: absolute; width: 700px; height: 700px; border-radius: 50%; filter: blur(130px); opacity: 0.12; background: var(--color-brand-green); top: -150px; right: -150px; animation: drift 25s infinite alternate ease-in-out; }
+        .bg-glow::after { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; filter: blur(130px); opacity: 0.08; background: var(--color-brand-blue); bottom: -100px; left: -100px; animation: drift 20s infinite alternate-reverse ease-in-out; }
+        @keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-80px,80px) scale(1.15); } }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
+
+        /* ── HERO ── */
+        #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; }
+        .hero-inner { display: grid; grid-template-columns: 1fr 420px; gap: 5rem; align-items: center; width: 100%; }
+
+        .hero-eyebrow { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2rem; }
+        .hero-eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-brand-green); box-shadow: 0 0 12px var(--color-brand-green); animation: pulse-dot 2s infinite; }
+        @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .hero-eyebrow span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-brand-green); font-weight: 600; }
+
+        .hero-title { font-family: var(--font-heading); font-size: clamp(3.5rem, 6vw, 7rem); line-height: 1.0; font-weight: 400; letter-spacing: -0.03em; margin-bottom: 2rem; }
+        .hero-title em { font-style: italic; background: linear-gradient(135deg, var(--color-brand-green) 0%, #34d399 50%, var(--color-brand-blue) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .hero-statement { font-size: 1.15rem; color: var(--color-text-secondary); max-width: 560px; line-height: 1.85; margin-bottom: 3rem; font-weight: 300; }
+        .hero-statement strong { color: #e2e8f0; font-weight: 600; }
+
+        .hero-proof { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.5rem; }
+        .proof-badge { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.55rem 1.1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; border: 1px solid; transition: all 0.3s; }
+        .proof-badge.green { border-color: rgba(16,185,129,0.4); background: rgba(16,185,129,0.08); color: var(--color-brand-green); }
+        .proof-badge.white { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); color: #cbd5e1; }
+        .proof-badge:hover { transform: translateY(-2px); }
+        .proof-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+        .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--color-brand-green); color: #000; padding: 1rem 2.2rem; border-radius: 50px; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; transition: all 0.35s var(--ease-out); box-shadow: 0 8px 24px rgba(16,185,129,0.35); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 35px rgba(16,185,129,0.5); background: #0fca8c; }
+        .btn-secondary { display: inline-flex; align-items: center; gap: 0.6rem; padding: 1rem 2.2rem; border-radius: 50px; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.15); color: var(--color-text-secondary); background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); transition: all 0.35s var(--ease-out); }
+        .btn-secondary:hover { border-color: rgba(255,255,255,0.35); color: #fff; transform: translateY(-3px); }
+
+        /* Hero Visual */
+        .hero-visual { position: relative; }
+        .hero-photo-wrap { position: relative; border-radius: 2rem; overflow: hidden; aspect-ratio: 3/4; }
+        .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 8s ease; }
+        .hero-photo-wrap:hover img { transform: scale(1.04); }
+        .hero-photo-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 55%, rgba(3,3,5,0.7) 80%, #030305 100%); pointer-events: none; }
+        .hero-photo-card { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); width: calc(100% - 3rem); background: rgba(3,3,5,0.85); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.2rem 1.5rem; backdrop-filter: blur(20px); }
+        .hero-photo-card h4 { font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .hero-photo-card p { font-size: 0.8rem; color: var(--color-brand-green); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
+
+        /* ── STATS STRIP ── */
+        .stats-strip { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 4rem 0; margin: 2rem 0 0 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+        .stat-item { }
+        .stat-num { font-family: var(--font-heading); font-size: 3.5rem; font-weight: 400; line-height: 1; background: linear-gradient(135deg, var(--color-brand-green), var(--color-brand-blue)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+        .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-secondary); font-weight: 600; }
+
+        /* ── ACHIEVEMENTS ── */
+        .section { padding: 8rem 0; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-brand-green); font-weight: 600; display: block; margin-bottom: 1rem; }
+        .section-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -0.02em; }
+        .gradient-text { background: linear-gradient(135deg, var(--color-brand-green), var(--color-brand-blue)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* Achievements Grid */
+        .achievements-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; gap: 1.5rem; }
+        .ach-card { background: rgba(255,255,255,0.02); border: 1px solid var(--color-border); border-radius: 1.5rem; overflow: hidden; position: relative; display: flex; flex-direction: column; transition: all 0.4s var(--ease-out); cursor: pointer; }
+        .ach-card:hover { transform: translateY(-6px); border-color: rgba(16,185,129,0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .ach-card.featured { grid-column: span 2; }
+        .ach-img { width: 100%; height: 240px; overflow: hidden; position: relative; }
+        .ach-card.featured .ach-img { height: 320px; }
+        .ach-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease-out); }
+        .ach-card:hover .ach-img img { transform: scale(1.05); }
+        .ach-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(3,3,5,0.9) 0%, transparent 60%); }
+        .ach-body { padding: 1.8rem; }
+        .ach-tag { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.8rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.8rem; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: var(--color-brand-green); }
+        .ach-title { font-family: var(--font-heading); font-size: 1.3rem; line-height: 1.3; margin-bottom: 0.5rem; }
+        .ach-card.featured .ach-title { font-size: 1.6rem; }
+        .ach-sub { font-size: 0.85rem; color: var(--color-text-secondary); line-height: 1.6; }
+        .ach-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.2rem; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand-green); opacity: 0; transform: translateX(-8px); transition: all 0.3s; }
+        .ach-card:hover .ach-link { opacity: 1; transform: translateX(0); }
+
+        /* ── CTA SECTION ── */
+        .cta-section { padding: 8rem 0; text-align: center; border-top: 1px solid var(--color-border); }
+        .cta-section h2 { font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 1.1; letter-spacing: -0.02em; }
+        .cta-section p { color: var(--color-text-secondary); font-size: 1.15rem; max-width: 500px; margin: 0 auto 3rem; line-height: 1.8; }
+
+        /* ── REVEAL ── */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal.delay-1 { transition-delay: 0.1s; }
+        .reveal.delay-2 { transition-delay: 0.2s; }
+        .reveal.delay-3 { transition-delay: 0.3s; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 4rem; }
+            .hero-visual { max-width: 420px; margin: 0 auto; }
+            .achievements-grid { grid-template-columns: 1fr 1fr; }
+            .ach-card.featured { grid-column: span 2; }
+        }
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+            .achievements-grid { grid-template-columns: 1fr; }
+            .ach-card.featured { grid-column: span 1; }
+        }
+        @media (max-width: 480px) {
+            .hero-cta { flex-direction: column; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <!-- ── HERO ── -->
+        <section id="hero">
+            <div class="container">
+                <div class="hero-inner">
+                    <div class="hero-content">
+                        <div class="hero-eyebrow reveal">
+                            <span class="hero-eyebrow-dot"></span>
+                            <span>Marwan Magdy · </span>
+                        </div>
+
+                        <h1 class="hero-title reveal delay-1">
+                            Building the<br>
+                            future of<br>
+                            <em>Sports Tech.</em>
+                        </h1>
+
+                        <p class="hero-statement reveal delay-2">
+                            I'm a <strong>technical founder</strong> who bridges deep engineering with aggressive market strategy. As <strong>Founder & CEO of Riadi</strong> — backed by Flat6Labs — I'm digitizing athletic performance, venue management, and tournament logic across the Arab world.
+                        </p>
+
+                        <div class="hero-proof reveal delay-2">
+                            <span class="proof-badge green"><span class="dot"></span>Founder & CEO @ Riadi</span>
+                            <span class="proof-badge white">Flat6Labs Accelerator &#128640;</span>
+                            <span class="proof-badge white">7× Hackathon & Contest Winner</span>
+                            
+                        </div>
+
+                        <div class="hero-cta reveal delay-3">
+                            <a href="ventures.html" class="btn-primary">View Ventures ↗</a>
+                            <a href="about.html" class="btn-secondary">My Story</a>
+                            <a href="#contact-section" class="btn-secondary" style="border-color:rgba(16,185,129,.4);color:#10b981;">Contact Me &#9993;</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual reveal delay-2">
+                        <div class="hero-photo-wrap">
+                            <img src="assets/marwan_images/personal/main image.png" alt="Marwan Magdy, Founder & CEO">
+                            <div class="hero-photo-card" style="background:rgba(5,5,7,0.92);backdrop-filter:blur(16px);border:1px solid rgba(16,185,129,0.25);border-radius:0.875rem;padding:1rem 1.25rem;position:absolute;bottom:1.25rem;left:1.25rem;right:1.25rem;">
+                                <h4 style="font-family:var(--font-body);font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:.15rem;">Marwan Magdy</h4>
+                                <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--color-brand-green);">Founder &amp; CEO &middot; Riadi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── STATS ── -->
+        <div class="stats-strip reveal">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-num">7</div>
+                        <div class="stat-label">Hackathons & Contests Won</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">30+</div>
+                        <div class="stat-label">Certifications</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">3</div>
+                        <div class="stat-label">Active Ventures</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">1st</div>
+                        <div class="stat-label">Place @ EGYPES 2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- 🏆 ACHIEVEMENTS 🏆 -->
+    <section style="padding:6rem 0;border-top:1px solid rgba(255,255,255,0.07);">
+      <div class="container">
+        <div style="max-width:600px;margin-bottom:3.5rem;">
+          <span style="font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;color:#10b981;font-weight:700;display:block;margin-bottom:.75rem;">7 Awards &amp; Recognitions</span>
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.02em;line-height:1.1;">Awards &amp; <em style="font-style:italic;background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Achievements</em></h2>
+        </div>
+
+        <!-- ROW 1: Featured large + 2 side -->
+        <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:1.25rem;margin-bottom:1.25rem;">
+          <!-- FEATURED: 1st Place EGYPES -->
+          <a href="article-riadi.html" style="text-decoration:none;display:block;position:relative;border-radius:1.25rem;overflow:hidden;height:320px;border:1px solid rgba(255,255,255,.1);background:#0a0a12;group">
+            <img src="assets/marwan_images/Flat6Labs & Shell Intilaaqah Competition at EGYPES 2026/marwan magdy holding the prize.png" alt="1st Place EGYPES" style="width:100%;height:100%;object-fit:cover;opacity:.75;transition:all .5s;display:block;">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.95) 0%,rgba(5,5,7,.4) 50%,transparent 100%);"></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:1.75rem;">
+              <div style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(16,185,129,.9);color:#000;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:.3rem .75rem;border-radius:50px;margin-bottom:.75rem;">&#127942; 1st Place</div>
+              <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:#fff;line-height:1.2;margin-bottom:.35rem;">Flat6Labs &amp; Shell Intilaaqah @ EGYPES 2026</h3>
+              <p style="color:#94a3b8;font-size:.82rem;">Won 1st place with Riadi · Feb 2026</p>
+            </div>
+          </a>
+          <!-- RIGHT COLUMN: 2 stacked -->
+          <div style="display:grid;grid-template-rows:1fr 1fr;gap:1.25rem;">
+            <a href="article-huawei.html" style="text-decoration:none;display:block;position:relative;border-radius:1.25rem;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:#0a0a12;">
+              <img src="assets/marwan_images/Huawei Developer Competition 2025 Northern Africa/Winning 2nd Place across North Africa at the Huawei Developer Competition 2025 Northern Africa.jpeg" alt="Huawei" style="width:100%;height:100%;object-fit:cover;opacity:.7;display:block;">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.95) 0%,rgba(5,5,7,.3) 60%,transparent 100%);"></div>
+              <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem;">
+                <div style="display:inline-flex;background:rgba(59,130,246,.9);color:#fff;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:.25rem .65rem;border-radius:50px;margin-bottom:.5rem;">&#129352; 2nd Place</div>
+                <h3 style="font-size:1rem;color:#fff;line-height:1.25;font-weight:600;">Huawei Developer Competition — N. Africa</h3>
+              </div>
+            </a>
+            <a href="article-aiforlife.html" style="text-decoration:none;display:block;position:relative;border-radius:1.25rem;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:#0a0a12;">
+              <img src="assets/marwan_images/AI for Life Human- Centered Hackathon during Cairo ICT 2025/Winning 2nd Place at the AI for Life Human- Centered Hackathon during Cairo ICT 2025.jpeg" alt="AI for Life" style="width:100%;height:100%;object-fit:cover;opacity:.7;display:block;">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.95) 0%,rgba(5,5,7,.3) 60%,transparent 100%);"></div>
+              <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem;">
+                <div style="display:inline-flex;background:rgba(59,130,246,.9);color:#fff;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:.25rem .65rem;border-radius:50px;margin-bottom:.5rem;">&#129352; 2nd Place</div>
+                <h3 style="font-size:1rem;color:#fff;line-height:1.25;font-weight:600;">"AI for Life" Hackathon @ Cairo ICT 2025</h3>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- ROW 2: 4 equal cards -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;">
+          <a href="article-riadi.html" style="text-decoration:none;display:block;position:relative;border-radius:1.25rem;overflow:hidden;height:200px;border:1px solid rgba(255,255,255,.1);background:#0a0a12;">
+            <img src="assets/marwan_images/Accelerator Program at Flat6Labs/Selected for the Accelerator Program at Flat6Labs.jpeg" alt="Flat6Labs Accelerator" style="width:100%;height:100%;object-fit:cover;opacity:.7;display:block;">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.95) 0%,rgba(5,5,7,.3) 60%,transparent 100%);"></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:1rem;">
+              <div style="display:inline-flex;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);color:#fff;font-size:.63rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;padding:.22rem .6rem;border-radius:50px;margin-bottom:.4rem;">&#128640; Accelerator</div>
+              <h3 style="font-size:.88rem;color:#fff;line-height:1.25;font-weight:600;">Flat6Labs Accelerator</h3>
+            </div>
+          </a>
+          <a href="article-nasa.html" style="text-decoration:none;display:block;position:relative;border-radius:1.25rem;overflow:hidden;height:200px;border:1px solid rgba(255,255,255,.1);background:#0a0a12;">
+            <img src="assets/marwan_images/NASA space Apps Cairo 2024/Global nominee and Local Winner at NASA space Apps Cairo 2024.jpeg" alt="NASA" style="width:100%;height:100%;object-fit:cover;opacity:.7;display:block;">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.95) 0%,rgba(5,5,7,.3) 60%,transparent 100%);"></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:1rem;">
+              <div style="display:inline-flex;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);color:#fff;font-size:.63rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;padding:.22rem .6rem;border-radius:50px;margin-bottom:.4rem;">&#127757; Global Nominee</div>
+              <h3 style="font-size:.88rem;color:#fff;line-height:1.25;font-weight:600;">NASA Space Apps Cairo 2024</h3>
+            </div>
+          </a>
+          <a href="article-judhur.html" style="text-decoration:none;display:block;position:relative;border-radius:1.25rem;overflow:hidden;height:200px;border:1px solid rgba(255,255,255,.1);background:#0a0a12;">
+            <img src="assets/marwan_images/Enpact Hackathon/Winning Team at Enpact Hackathon, Selected for the Pre-lncubation Phase.jpeg" alt="enpact" style="width:100%;height:100%;object-fit:cover;opacity:.7;display:block;">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.95) 0%,rgba(5,5,7,.3) 60%,transparent 100%);"></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:1rem;">
+              <div style="display:inline-flex;background:rgba(16,185,129,.8);color:#000;font-size:.63rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;padding:.22rem .6rem;border-radius:50px;margin-bottom:.4rem;">&#127808; Pre-Incubation</div>
+              <h3 style="font-size:.88rem;color:#fff;line-height:1.25;font-weight:600;">enpact Pre-Incubation Winner</h3>
+            </div>
+          </a>
+          <a href="article-unbounded.html" style="text-decoration:none;display:block;position:relative;border-radius:1.25rem;overflow:hidden;height:200px;border:1px solid rgba(255,255,255,.1);background:#0a0a12;">
+            <img src="assets/marwan_images/CAE Green Contest 2023/Winning 2nd Place at Credit Agricole Egypt's CAE Green Contest 2023.jpeg" alt="CAE" style="width:100%;height:100%;object-fit:cover;opacity:.7;display:block;">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.95) 0%,rgba(5,5,7,.3) 60%,transparent 100%);"></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:1rem;">
+              <div style="display:inline-flex;background:rgba(59,130,246,.85);color:#fff;font-size:.63rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;padding:.22rem .6rem;border-radius:50px;margin-bottom:.4rem;">&#129352; 2nd Place</div>
+              <h3 style="font-size:.88rem;color:#fff;line-height:1.25;font-weight:600;">CAE Green ESG Contest 2023</h3>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-- ── CONNECT ── -->
+    <div id="contact-section"></div>
+    <section class="container reveal" style="padding:5rem 0;border-top:1px solid rgba(255,255,255,0.08);">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+            <div>
+                <span style="font-size:.8rem;text-transform:uppercase;letter-spacing:.2em;color:var(--color-brand-green);font-weight:600;display:block;margin-bottom:1rem;">Get in Touch</span>
+                <h2 style="font-family:var(--font-heading);font-size:clamp(2rem,4vw,3rem);letter-spacing:-.02em;margin-bottom:1.5rem;">Let's <em style="font-style:italic;background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Build</em> Together</h2>
+                <p style="color:var(--color-text-secondary);font-size:1.1rem;line-height:1.8;margin-bottom:2.5rem;">Whether you're an investor, partner, fellow founder, or just want to connect — I'd love to hear from you.</p>
+                <div style="display:flex;flex-direction:column;gap:1rem;">
+                    <a href="mailto:marwan@riadiapp.com" style="display:inline-flex;align-items:center;gap:.8rem;color:var(--color-text-secondary);font-size:1rem;transition:color .3s;text-decoration:none;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#94a3b8'">
+                        <span style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.9rem;">✉</span>
+                        marwan@riadiapp.com
+                    </a>
+                    <a href="https://linkedin.com/in/marwanmagdy" target="_blank" style="display:inline-flex;align-items:center;gap:.8rem;color:var(--color-text-secondary);font-size:1rem;transition:color .3s;text-decoration:none;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#94a3b8'">
+                        <span style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.9rem;">in</span>
+                        LinkedIn
+                    </a>
+                    <a href="https://riadiapp.com" target="_blank" style="display:inline-flex;align-items:center;gap:.8rem;color:var(--color-text-secondary);font-size:1rem;transition:color .3s;text-decoration:none;" onmouseover="this.style.color='#10b981'" onmouseout="this.style.color='#94a3b8'">
+                        <span style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.9rem;">🌐</span>
+                        riadiapp.com
+                    </a>
+                </div>
+            </div>
+            <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:1.5rem;padding:2.5rem;">
+                <h3 style="font-size:1.1rem;font-weight:600;margin-bottom:1.5rem;">Quick Message</h3>
+                <form onsubmit="sendQuickMsg(event)" style="display:flex;flex-direction:column;gap:1rem;">
+                    <input id="qName" type="text" placeholder="Your name" required style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#f1f5f9;font-family:var(--font-body);font-size:.95rem;padding:1rem 1.2rem;border-radius:.75rem;outline:none;transition:border-color .3s;" onfocus="this.style.borderColor='rgba(16,185,129,.4)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+                    <input id="qEmail" type="email" placeholder="Your email" required style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#f1f5f9;font-family:var(--font-body);font-size:.95rem;padding:1rem 1.2rem;border-radius:.75rem;outline:none;transition:border-color .3s;" onfocus="this.style.borderColor='rgba(16,185,129,.4)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+                    <textarea id="qMsg" rows="4" placeholder="Your message..." required style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#f1f5f9;font-family:var(--font-body);font-size:.95rem;padding:1rem 1.2rem;border-radius:.75rem;outline:none;transition:border-color .3s;resize:vertical;" onfocus="this.style.borderColor='rgba(16,185,129,.4)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'"></textarea>
+                    <button type="submit" style="background:var(--color-brand-green);color:#000;font-family:var(--font-body);font-weight:700;font-size:.95rem;padding:1rem;border-radius:.75rem;border:none;cursor:pointer;transition:all .3s;" onmouseover="this.style.background='#0ea271'" onmouseout="this.style.background='#10b981'">Send Message →</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <style>@media(max-width:768px){.connect-grid{grid-template-columns:1fr!important}}</style>
+    <script>
+    function sendQuickMsg(e){
+        e.preventDefault();
+        const name=document.getElementById('qName').value;
+        const email=document.getElementById('qEmail').value;
+        const msg=document.getElementById('qMsg').value;
+        window.location.href='mailto:marwan@riadiapp.com?subject=Message from '+encodeURIComponent(name)+'&body='+encodeURIComponent(msg+'\n\nFrom: '+email);
+    }
+    </script>
+
+        <!-- ── CTA ── -->
+        <section class="cta-section reveal">
+            <div class="container">
+                <h2>Ready to <span class="gradient-text">build together?</span></h2>
+                <p>Whether you're an investor, partner, or fellow founder — the conversation starts here.</p>
+                <a href="contact.html" class="btn-primary">Start a Conversation →</a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('nav.html').then(r => r.text()).then(data => {
+                const temp = document.createElement('div'); temp.innerHTML = data;
+                const ph = document.getElementById('nav-placeholder');
+                while (temp.firstChild) {
+                    const child = temp.firstChild;
+                    if (child.tagName === 'SCRIPT') {
+                        const s = document.createElement('script');
+                        s.textContent = child.textContent;
+                        document.body.appendChild(s);
+                        temp.removeChild(child);
+                    } else { ph.appendChild(child); }
+                }
+            });
+            fetch('footer.html').then(r => r.text()).then(d => document.getElementById('footer-placeholder').innerHTML = d);
+
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+        });
+    </script>
+</body>
+</html>

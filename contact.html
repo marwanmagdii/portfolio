@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwan Magdy | Founder and CEO Riadi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #030305;
+            --color-surface: rgba(15, 15, 20, 0.6); 
+            --color-text-primary: #f8fafc;
+            --color-text-secondary: #94a3b8;
+            --color-border: rgba(255, 255, 255, 0.2);
+            --color-brand-green: #10b981; 
+            --color-brand-blue: #3b82f6;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Outfit', sans-serif;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--color-bg); color: var(--color-text-primary); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden;}
+        
+        .bg-glow { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1; }
+        .bg-glow::before { content: ''; position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.1; width: 600px; height: 600px; background: var(--color-brand-green); bottom: -100px; right: -100px; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        
+        .page-header { text-align: center; padding: 12rem 0 4rem 0; }
+        .page-title { font-family: var(--font-heading); font-size: clamp(3rem, 5vw, 5rem); margin-bottom: 1rem; }
+        .gradient-text { background: linear-gradient(135deg, var(--color-brand-green), var(--color-brand-blue)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* CONTACT GRID */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding-bottom: 6rem; align-items: start; }
+        
+        .contact-info h2 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; }
+        .contact-info p { color: var(--color-text-secondary); font-size: 1.1rem; margin-bottom: 3rem; }
+        
+        .contact-method { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+        .cm-icon { width: 50px; height: 50px; border-radius: 50%; background: rgba(16,185,129,0.1); border: 1px solid var(--color-brand-green); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .cm-text h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.2rem; }
+        .cm-text a { color: var(--color-text-secondary); text-decoration: none; transition: color 0.3s; }
+        .cm-text a:hover { color: var(--color-brand-green); }
+
+        /* FORM */
+        .contact-form { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 1.5rem; padding: 3rem; backdrop-filter: blur(10px); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--color-text-secondary); font-weight: 600; }
+        .form-input { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--color-border); padding: 1rem; border-radius: 0.5rem; color: #fff; font-family: inherit; font-size: 1rem; outline: none; transition: border-color 0.3s; }
+        .form-input:focus { border-color: var(--color-brand-green); }
+        textarea.form-input { resize: vertical; min-height: 150px; }
+        
+        .btn-submit { width: 100%; display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--color-brand-green), #059669); padding: 1.2rem 2.5rem; border-radius: 0.5rem; color: #fff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; transition: all 0.4s var(--ease-out); cursor: pointer; border: none; margin-top: 1rem; }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3); }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s var(--ease-out); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 992px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-form { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div id="nav-placeholder"></div>
+
+    <header class="page-header container reveal">
+        <h1 class="page-title">Let's <span class="gradient-text">Connect</span></h1>
+        <p style="color: var(--color-text-secondary); font-size: 1.2rem;">Have a project, startup idea, or want to book a mentorship session?</p>
+    </header>
+
+    <main class="container">
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h2>Reach Out</h2>
+                <p>I am always open to discussing new opportunities, business collaborations, or providing guidance to ambitious founders.</p>
+                
+                <div class="contact-method">
+                    <div class="cm-icon">✉️</div>
+                    <div class="cm-text">
+                        <h4>Personal Email</h4>
+                        <a href="mailto:marwan@riadiapp.com">marwan@riadiapp.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="cm-icon" style="font-size:0.7rem; font-weight:700; color:var(--color-brand-green); font-family:var(--font-body);">R.</div>
+                    <div class="cm-text">
+                        <h4>Riadi — Company Email</h4>
+                        <a href="mailto:Contact@riadiapp.com">Contact@riadiapp.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="cm-icon">💼</div>
+                    <div class="cm-text">
+                        <h4>LinkedIn</h4>
+                        <a href="https://www.linkedin.com/in/marwanmagdyy" target="_blank">Connect on LinkedIn</a>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="cm-icon">🎓</div>
+                    <div class="cm-text">
+                        <h4>Mentorship & Coaching</h4>
+                        <a href="https://calendly.com/marwanmagdy/one-on-one" target="_blank">Book a 1:1 Session</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form reveal delay-1">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-input" placeholder="How can I help?" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-input" placeholder="Your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('nav.html').then(res => res.text()).then(data => {
+                const temp = document.createElement('div'); temp.innerHTML = data;
+                document.getElementById('nav-placeholder').appendChild(temp);
+                Array.from(temp.querySelectorAll('script')).forEach(oldScript => {
+                    const newScript = document.createElement('script');
+                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                    oldScript.parentNode.replaceChild(newScript, oldScript);
+                });
+            });
+            fetch('footer.html').then(res => res.text()).then(data => document.getElementById('footer-placeholder').innerHTML = data);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
