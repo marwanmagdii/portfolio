@@ -1,4 +1,9 @@
-<style>
+import os
+
+BASE = r'D:\web\portfolio entrepreneur'
+path_nav = os.path.join(BASE, 'nav.html')
+
+clean_nav = """<style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
     .navbar-global { 
         position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height, 80px); 
@@ -121,3 +126,9 @@
         });
     })();
 </script>
+"""
+
+with open(path_nav, 'w', encoding='utf-8') as f:
+    f.write(clean_nav)
+
+print("Nav bar hamburger menu successfully implemented.")
